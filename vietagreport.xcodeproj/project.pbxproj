@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
+		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
+		E693C2322377ACD90084DEC5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C2312377ACD90084DEC5 /* Environment.swift */; };
 		E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A502C82337ADFF00E8128C /* LoginView.swift */; };
 		E6C425F62335ABFF005F8A99 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C425F52335ABFF005F8A99 /* LoginViewController.swift */; };
 		E6C425F92335AC3A005F8A99 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C425F82335AC3A005F8A99 /* ForgotPasswordViewController.swift */; };
@@ -47,6 +49,8 @@
 
 /* Begin PBXFileReference section */
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		E693C2312377ACD90084DEC5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E6A502C82337ADFF00E8128C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E6C425F52335ABFF005F8A99 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E6C425F82335AC3A005F8A99 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				E613EFF32369CE5B00C43535 /* NetworkClient.swift */,
+				E6466254236D905500375EB9 /* NetworkRouter.swift */,
+				E693C2312377ACD90084DEC5 /* Environment.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -382,12 +388,14 @@
 				E6C426052335B3B1005F8A99 /* LoginInteractor.swift in Sources */,
 				E6C425FF2335AC87005F8A99 /* ChangePasswordViewController.swift in Sources */,
 				E6DC3BA3232E3441009DDD8B /* vietagreport.xcdatamodeld in Sources */,
+				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6C425FC2335AC53005F8A99 /* RecoveryPasswordViewController.swift in Sources */,
 				E6FAB66C23486EBA00CED3B2 /* TransferServiceScanner.swift in Sources */,
+				E693C2322377ACD90084DEC5 /* Environment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
