@@ -12,39 +12,6 @@ import Dispatch
 //Handling an Authentication Challenge
 //
 
-enum NetworkServiceError: Error {
-    case apiError
-    case invalidRequestURL
-    case invalidEndpoint
-    case invalidResponse
-    case noDataInResponse
-    case noResponseReceived
-    case decodeError
-    case noInternet
-    case serverSideError
-    case badRequest
-    case authenticationError
-    case cancelled
-    
-    var title: String {
-        switch self {
-        case .apiError:
-            return NSLocalizedString("Invalid Cloudant Credentials", comment: "Credentials")
-        default:
-            return NSLocalizedString("Invalid Cloudant Credentials", comment: "Credentials")
-        }
-    }
-    
-    var description: String {
-        switch self {
-        case .apiError:
-            return NSLocalizedString("Please check the readme for instructions on setting up your Cloudant database.", comment: "Cloudant database.")
-        default:
-            return NSLocalizedString("Please check the readme for instructions on setting up your Cloudant database.", comment: "Cloudant database.")
-        }
-    }
-}
-
 // Properly checks and handles the status code of the response
 protocol NetworkClientProtocol {
     func sendRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
@@ -61,7 +28,16 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     private var session: URLSession?
     private var task: URLSessionTask?
     private let queue = DispatchQueue(label: "network-client")
-    private let defaultHeaders:[AnyHashable : Any] = ["Content-type": "application/json; charset=utf-8"]
+    private let defaultHeaders:[AnyHashable : Any] = [
+        "Content-type": "application/json; charset=utf-8",
+        "Accept": "application/vnd.github.v3+json"
+    ]
+    
+    private lazy var decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return decoder
+    }()
     
     // MARK: - Initialization
     override init() {
@@ -92,7 +68,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                         debugPrint("networkServiceError ", networkError)
                         networkServiceError = NetworkServiceError.apiError
                     } else if let jsonData = data {
-                        networkServiceResult = try JSONDecoder().decode(T.self, from: jsonData)
+                        networkServiceResult = try self.decoder.decode(T.self, from: jsonData)
                     }
                 } catch let exception {
                     debugPrint("exception ", exception)
@@ -126,7 +102,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         case URLError.cannotFindHost:
             return NetworkServiceError.decodeError
         case URLError.cancelled:
-            return NetworkServiceError.cancelled
+            return NetworkServiceError.userCancelled
         default:
             return NetworkServiceError.apiError
         }

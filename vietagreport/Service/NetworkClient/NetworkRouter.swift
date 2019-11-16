@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import SafariServices
 
 protocol NetworkRequestConvertible {
-    func asURLRequest() throws -> URLRequest
+    func asURLRequest(with authorization: Authentication) throws -> URLRequest
 }
 
 enum NetworkRouter: NetworkRequestConvertible {
@@ -31,11 +32,14 @@ enum NetworkRouter: NetworkRequestConvertible {
     }
     
     var baseURL: URL {
-        return URL(string: "")
+        guard let url = URL(string: "https://api.github.com") else {
+            fatalError("Error: Not implement base url")
+        }
+        return url
     }
     
     
-    func asURLRequest() throws -> URLRequest {
+    func asURLRequest(with authorization: Authentication) throws -> URLRequest {
         guard let url = URL(string: "") else {
             throw NetworkServiceError.invalidEndpoint
         }

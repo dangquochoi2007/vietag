@@ -9,8 +9,8 @@
 import Foundation
 
 enum Environment {
-    case development
-    case alpha
-    case staging
-    case production
+    case Development
+    case Alpha
+    case Staging
+    case Production
 }
