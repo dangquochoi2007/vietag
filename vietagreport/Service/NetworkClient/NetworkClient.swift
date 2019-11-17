@@ -30,7 +30,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     private let queue = DispatchQueue(label: "network-client")
     private let defaultHeaders:[AnyHashable : Any] = [
         "Content-type": "application/json; charset=utf-8",
-        "Accept": "application/vnd.github.v3+json"
+        "Accept": "application/json"
     ]
     
     private lazy var decoder: JSONDecoder = {

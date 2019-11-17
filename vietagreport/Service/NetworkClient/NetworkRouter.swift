@@ -31,16 +31,21 @@ enum NetworkRouter: NetworkRequestConvertible {
         }
     }
     
-    var baseURL: URL {
-        guard let url = URL(string: "https://api.github.com") else {
-            fatalError("Error: Not implement base url")
-        }
-        return url
+    var baseURL: URL? {
+        return URL(string: "https://api.github.com")
     }
     
+    var path: String {
+        switch self {
+        case .login:
+            return "/login"
+        default:
+            return ""
+        }
+    }
     
     func asURLRequest(with authorization: Authentication) throws -> URLRequest {
-        guard let url = URL(string: "") else {
+        guard let url = baseURL?.appendingPathComponent(path) else {
             throw NetworkServiceError.invalidEndpoint
         }
         return URLRequest(url: url)
