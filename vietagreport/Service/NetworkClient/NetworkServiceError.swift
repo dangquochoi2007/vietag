@@ -31,7 +31,7 @@ enum NetworkServiceError: Error {
         }
     }
     
-    var description: String {
+    func message() -> String {
         switch self {
         case .apiError:
             return NSLocalizedString("Please check the readme for instructions on setting up your Cloudant database.", comment: "Cloudant database.")

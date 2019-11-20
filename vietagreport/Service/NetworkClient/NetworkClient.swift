@@ -80,6 +80,26 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         self.task?.resume()
     }
     
+    func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping ([T]?, NetworkServiceError?) -> Void) {
+        self.task = session?.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                var networkServiceResult: [T]? = nil
+                var networkServiceError: NetworkServiceError? = nil
+                do {
+                    if let networkError = error {
+                        networkServiceError = self.convertNetworkServiceError(error: networkError)
+                    } else if let jsonData = data {
+                        networkServiceResult = try self.decoder.decode([T].self, from: jsonData)
+                    }
+                } catch let exception {
+                    debugPrint("exception ", exception)
+                    networkServiceError = NetworkServiceError.decodeError
+                }
+                completion(networkServiceResult, networkServiceError)
+            }
+        }
+    }
+    
     func sendRequest(request: URLRequest, completion: @escaping(NetworkServiceError?) -> Void) {
         self.task = session?.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
@@ -87,7 +107,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                 if let networkError = error {
                     networkServiceError = self.convertNetworkServiceError(error: networkError)
                 } else if let res = response as? HTTPURLResponse {
-                    networkServiceError = self.convertNetworkServiceError(response: res)
+                    networkServiceError = self.validateStatusCode(response: res)
                 }
                 completion(networkServiceError)
             }
@@ -108,7 +128,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         }
     }
     
-    private func convertNetworkServiceError(response: HTTPURLResponse) -> NetworkServiceError? {
+    private func validateStatusCode(response: HTTPURLResponse) -> NetworkServiceError? {
         switch response.statusCode {
         case 200...299:
             //success
