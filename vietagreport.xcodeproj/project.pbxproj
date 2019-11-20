@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
+		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
 		E693C2322377ACD90084DEC5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C2312377ACD90084DEC5 /* Environment.swift */; };
 		E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A38620237F839E005279D2 /* NetworkServiceError.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		E693C2312377ACD90084DEC5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E6A38620237F839E005279D2 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				E6466254236D905500375EB9 /* NetworkRouter.swift */,
 				E693C2312377ACD90084DEC5 /* Environment.swift */,
 				E6A38620237F839E005279D2 /* NetworkServiceError.swift */,
+				E6372E5C2385BC080079674E /* APIError.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
+				E6372E5D2385BC080079674E /* APIError.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,

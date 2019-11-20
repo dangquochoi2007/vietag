@@ -17,10 +17,19 @@ enum NetworkServiceError: Error {
     case noResponseReceived
     case decodeError
     case noInternet
-    case serverSideError
+    case userCancelled
+    //https://developer.apple.com/documentation/appstoreconnectapi/interpreting_and_handling_errors/about_the_http_status_code
     case badRequest
     case authenticationError
-    case userCancelled
+    case notFound
+    case methodNotAllowed
+    case notAcceptable
+    case conflict
+    case gone
+    case unsupportedMediaType
+    case unprocessableEntity
+    case tooManyRequests
+    case internalServerError
     
     var title: String {
         switch self {

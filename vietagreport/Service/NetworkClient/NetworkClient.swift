@@ -23,14 +23,20 @@ protocol NetworkClientProtocol {
 
 class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
+    enum MIMEType: String {
+        case json = "application/json"
+        case urlEncoded = "application/x-www-form-urlencoded; charset=utf-8"
+    }
+    
+    //
     static let shared = NetworkClient()
     
     private var session: URLSession?
     private var task: URLSessionTask?
     private let queue = DispatchQueue(label: "network-client")
     private let defaultHeaders:[AnyHashable : Any] = [
-        "Content-type": "application/json; charset=utf-8",
-        "Accept": "application/json"
+        "Content-type": MIMEType.json.rawValue,
+        "Accept": MIMEType.json.rawValue
     ]
     
     private lazy var decoder: JSONDecoder = {
@@ -124,7 +130,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         case URLError.cancelled:
             return NetworkServiceError.userCancelled
         default:
-            return NetworkServiceError.apiError
+            return NetworkServiceError.invalidRequestURL
         }
     }
     
@@ -138,7 +144,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         case 400...499:
             return NetworkServiceError.badRequest
         case 500...599:
-            return NetworkServiceError.serverSideError
+            return NetworkServiceError.internalServerError
         default:
             return NetworkServiceError.apiError
         }
