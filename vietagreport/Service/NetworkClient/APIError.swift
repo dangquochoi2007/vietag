@@ -9,5 +9,15 @@
 import Foundation
 
 struct APIError: Decodable {
-    var message: String
+    struct NetworkError: Decodable {
+        var status: String?
+        var id: String?
+        var title: String?
+        var detail: String?
+        var code: String?
+    }
+    
+    var message: String?
+    var documentationUrl: String?
+    var errors: [NetworkError]?
 }

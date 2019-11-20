@@ -42,6 +42,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
         return decoder
     }()
     
