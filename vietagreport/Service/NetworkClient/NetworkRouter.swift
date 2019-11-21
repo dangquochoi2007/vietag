@@ -49,7 +49,7 @@ enum NetworkRouter: NetworkRequestConvertible {
             throw NetworkServiceError.invalidEndpoint
         }
         var request = URLRequest(url: url)
-        request.allHTTPHeaderFields = authorization.headers()
+        request.setValue(authorization.value, forHTTPHeaderField: authorization.key)
         return request
     }
 }

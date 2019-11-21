@@ -62,10 +62,10 @@ class BasicAuthenication: Authentication {
     }
     
     private func convertStringToBase64(value: String) -> String? {
-        guard let data = Data(base64Encoded: value, options: Data.Base64DecodingOptions(rawValue: 0)) else {
+        guard let data = Data(base64Encoded: value) else {
             return nil
         }
-        return data.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+        return data.base64EncodedString()
     }
 }
 

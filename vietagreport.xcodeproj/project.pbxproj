@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
@@ -109,6 +111,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9AD8B9FE23863CA500E7F269 /* ServiceTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AD8B9FF23863CBC00E7F269 /* NetworkClientTests */,
+			);
+			path = ServiceTests;
+			sourceTree = "<group>";
+		};
+		9AD8B9FF23863CBC00E7F269 /* NetworkClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */,
+			);
+			path = NetworkClientTests;
+			sourceTree = "<group>";
+		};
 		E613EFF22369CE4800C43535 /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +242,7 @@
 		E6DC3BB1232E3443009DDD8B /* vietagreportTests */ = {
 			isa = PBXGroup;
 			children = (
+				9AD8B9FE23863CA500E7F269 /* ServiceTests */,
 				E6DC3BB2232E3443009DDD8B /* vietagreportTests.swift */,
 				E6DC3BB4232E3443009DDD8B /* Info.plist */,
 			);
@@ -415,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */,
 				E6DC3BB3232E3443009DDD8B /* vietagreportTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
