@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
     var interactor: LoginBusinessLogic?
     var router: LoginRoutingRouterLogic?
     
+    lazy var loginView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -26,7 +31,7 @@ class LoginViewController: UIViewController {
     }
     
     deinit {
-        
+        debugPrint("LoginViewController deinit")
     }
 
     override var shouldAutorotate: Bool {
@@ -35,6 +40,11 @@ class LoginViewController: UIViewController {
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .portrait
+    }
+    
+    
+    override func loadView() {
+        view = loginView
     }
     
     override func viewDidLoad() {
