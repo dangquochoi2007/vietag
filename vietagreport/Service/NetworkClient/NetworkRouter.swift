@@ -48,6 +48,8 @@ enum NetworkRouter: NetworkRequestConvertible {
         guard let url = baseURL?.appendingPathComponent(path) else {
             throw NetworkServiceError.invalidEndpoint
         }
-        return URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = authorization.headers()
+        return request
     }
 }

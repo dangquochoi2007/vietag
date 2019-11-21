@@ -18,7 +18,7 @@ enum NetworkServiceError: Error {
     case decodeError
     case noInternet
     case userCancelled
-    //https://developer.apple.com/documentation/appstoreconnectapi/interpreting_and_handling_errors/about_the_http_status_code
+    ///https://developer.apple.com/documentation/appstoreconnectapi/interpreting_and_handling_errors/about_the_http_status_code
     case badRequest
     case authenticationError
     case notFound

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     lazy var loginView: UIView = {
         let view = UIView()
+        view.backgroundColor = UIColor.red
         return view
     }()
     
@@ -33,15 +34,10 @@ class LoginViewController: UIViewController {
     deinit {
         debugPrint("LoginViewController deinit")
     }
-
-    override var shouldAutorotate: Bool {
-        return false
-    }
     
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return .portrait
     }
-    
     
     override func loadView() {
         view = loginView
