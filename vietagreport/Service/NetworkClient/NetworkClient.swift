@@ -21,7 +21,7 @@ protocol NetworkClientProtocol {
     func cancelAllRequest()
 }
 
-class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
+class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
     
     enum MIMEType: String {
         case json = "application/json"
@@ -32,7 +32,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     static let shared = NetworkClient()
     
     private var session: URLSession?
-    private var task: URLSessionTask?
+    private var dataTask: URLSessionTask?
     private let queue = DispatchQueue(label: "network-client")
     private let defaultHeaders:[AnyHashable : Any] = [
         "Content-type": MIMEType.json.rawValue,
@@ -53,20 +53,21 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0)
         configuration.httpMaximumConnectionsPerHost = 2
         configuration.httpAdditionalHeaders = defaultHeaders
-        self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: OperationQueue.current)
+        self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     
     // MARK: - NetworkClientProtocol
     func sendRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        session?.dataTask(with: request) { (data, response, error) in
+        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 completion(data, response, error)
             }
         }
+        self.dataTask?.resume()
     }
     
     func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping (T?, NetworkServiceError?) -> Void) {
-        self.task = session?.dataTask(with: request) { (data, response, error) in
+        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 var networkServiceResult: T? = nil
                 var networkServiceError: NetworkServiceError? = nil
@@ -84,11 +85,11 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                 completion(networkServiceResult, networkServiceError)
             }
         }
-        self.task?.resume()
+        self.dataTask?.resume()
     }
     
     func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping ([T]?, NetworkServiceError?) -> Void) {
-        self.task = session?.dataTask(with: request) { data, response, error in
+        self.dataTask = session?.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
                 var networkServiceResult: [T]? = nil
                 var networkServiceError: NetworkServiceError? = nil
@@ -105,10 +106,11 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                 completion(networkServiceResult, networkServiceError)
             }
         }
+        self.dataTask?.resume()
     }
     
     func sendRequest(request: URLRequest, completion: @escaping(NetworkServiceError?) -> Void) {
-        self.task = session?.dataTask(with: request) { (data, response, error) in
+        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 var networkServiceError: NetworkServiceError? = nil
                 if let networkError = error {
@@ -119,7 +121,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                 completion(networkServiceError)
             }
         }
-        task?.resume()
+        self.dataTask?.resume()
     }
     
     private func convertNetworkServiceError(error: Error) -> NetworkServiceError? {
@@ -187,21 +189,11 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     }
 
     //URLSessionDelegate
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         debugPrint("didReceive")
     }
     
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        debugPrint("forBackgroundURLSession")
-    }
-    
-    func urlSession(_ session: URLSession, didBecomeInvalidWithError error: Error?) {
-        debugPrint("didBecomeInvalidWithError")
-    }
-    
-    //URLSessionTaskDelegate
-    func urlSession(_ session: URLSession, task: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        debugPrint("didReceive URLAuthenticationChallenge")
-        
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        debugPrint("didCompleteWithError" , error)
     }
 }

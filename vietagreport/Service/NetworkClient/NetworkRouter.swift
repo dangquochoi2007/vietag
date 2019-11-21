@@ -38,7 +38,7 @@ enum NetworkRouter: NetworkRequestConvertible {
     var path: String {
         switch self {
         case .login:
-            return "/login"
+            return ""
         default:
             return ""
         }
@@ -49,7 +49,8 @@ enum NetworkRouter: NetworkRequestConvertible {
             throw NetworkServiceError.invalidEndpoint
         }
         var request = URLRequest(url: url)
-        request.setValue(authorization.value, forHTTPHeaderField: authorization.key)
+        request.httpMethod = method
+//        request.setValue(authorization.value, forHTTPHeaderField: authorization.key)
         return request
     }
 }

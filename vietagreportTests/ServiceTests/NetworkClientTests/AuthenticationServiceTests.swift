@@ -52,31 +52,36 @@ class AuthenticationServiceTests: XCTestCase {
     }
     
     func testValidCallAuthenticateHTTPStatus200() {
-        let promise = expectation(description: "Login successful and status code: 200")
-        
+        // given
+        let promise = expectation(description: "Login successful and status code: 304")
         guard let request = try? NetworkRouter.login.asURLRequest(with: basicAuthenication) else {
             XCTFail("Error: request invalid")
             return
         }
-        NetworkClient.shared.sendRequest(request: request) { (data, response, error) in
-            guard error != nil else {
-                XCTFail("Error: \(error?.localizedDescription ?? "")")
-                return
-            }
-            
-            guard let res = response as? HTTPURLResponse else {
-                promise.fulfill()
-                XCTFail("Error: have no http response")
-                return
-            }
-            if res.statusCode == 200 {
-                promise.fulfill()
-            } else {
-                XCTFail("Error: Status code invalid: \(res.statusCode)")
-            }
-        }
+        var statusCode: Int?
+        var responseError: Error?
         
-        wait(for: [promise], timeout: 20)
+        // when
+        NetworkClient.shared.sendRequest(request: request) { (data, response, error) in
+            guard error == nil else {
+                XCTFail("Error: \(error?.localizedDescription ?? "")")
+                responseError = error
+                promise.fulfill()
+                return
+            }
+            guard let res = response as? HTTPURLResponse else {
+                XCTFail("Error: have no http response")
+                promise.fulfill()
+                return
+            }
+            statusCode = res.statusCode
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        
+        // then
+        XCTAssertNil(responseError)
+        XCTAssertEqual(statusCode, 200)
     }
 
     func testPerformanceExample() {
