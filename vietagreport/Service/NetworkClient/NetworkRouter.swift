@@ -37,7 +37,13 @@ enum NetworkRouter: NetworkRequestConvertible {
     
     var path: String {
         switch self {
+        case .signup:
+            return ""
         case .login:
+            return ""
+        case .logout:
+            return ""
+        case .forgotPassword:
             return ""
         default:
             return ""
