@@ -73,13 +73,14 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
                 var networkServiceError: NetworkServiceError? = nil
                 do {
                     if let networkError = error {
-                        debugPrint("networkServiceError ", networkError)
-                        networkServiceError = NetworkServiceError.apiError
+                        networkServiceError = self.convertNetworkServiceError(error: networkError)
+                    } else if let res = response as? HTTPURLResponse,
+                        let networkError = self.validateStatusCode(response: res){
+                        networkServiceError = networkError
                     } else if let jsonData = data {
                         networkServiceResult = try self.decoder.decode(T.self, from: jsonData)
                     }
-                } catch let exception {
-                    debugPrint("exception ", exception)
+                } catch {
                     networkServiceError = NetworkServiceError.decodeError
                 }
                 completion(networkServiceResult, networkServiceError)
@@ -186,6 +187,10 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
             semaphore.signal()
         })
         _ = semaphore.wait(timeout: .now() + 60.0)
+    }
+    
+    func logRequests(urlRequest: URLRequest) {
+        debugPrint("? Running request: \(urlRequest.httpMethod ?? "") - \(urlRequest.url?.absoluteString ?? "")")
     }
 
     //URLSessionDelegate

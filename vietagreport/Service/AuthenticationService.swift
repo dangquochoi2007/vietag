@@ -52,8 +52,8 @@ class BasicAuthenication: Authentication {
     }
     
     override var value: String {
-        let authorization = self.username + ":" + self.password
-        return "Basic \(convertStringToBase64(value: authorization) ?? "")"
+        let authorizationValue =  "\(self.username):\(self.password)"
+        return "Basic \(convertStringToBase64(value: authorizationValue) ?? "")"
     }
     
     init(username: String, password: String) {
@@ -62,10 +62,10 @@ class BasicAuthenication: Authentication {
     }
     
     private func convertStringToBase64(value: String) -> String? {
-        guard let data = Data(base64Encoded: value) else {
+        guard let data = value.data(using: String.Encoding.utf8) else {
             return nil
         }
-        return data.base64EncodedString()
+        return data.base64EncodedString(options: [])
     }
 }
 
