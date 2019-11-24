@@ -89,27 +89,6 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
         self.dataTask?.resume()
     }
     
-    func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping ([T]?, NetworkServiceError?) -> Void) {
-        self.dataTask = session?.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                var networkServiceResult: [T]? = nil
-                var networkServiceError: NetworkServiceError? = nil
-                do {
-                    if let networkError = error {
-                        networkServiceError = self.convertNetworkServiceError(error: networkError)
-                    } else if let jsonData = data {
-                        networkServiceResult = try self.decoder.decode([T].self, from: jsonData)
-                    }
-                } catch let exception {
-                    debugPrint("exception ", exception)
-                    networkServiceError = NetworkServiceError.decodeError
-                }
-                completion(networkServiceResult, networkServiceError)
-            }
-        }
-        self.dataTask?.resume()
-    }
-    
     func sendRequest(request: URLRequest, completion: @escaping(NetworkServiceError?) -> Void) {
         self.dataTask = session?.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
