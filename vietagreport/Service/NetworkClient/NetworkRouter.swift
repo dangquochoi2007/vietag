@@ -19,6 +19,7 @@ enum NetworkRouter: NetworkRequestConvertible {
     case logout
     case forgotPassword
     case search
+    case renewToken
     
 
     // MARK: - HTTPMethod

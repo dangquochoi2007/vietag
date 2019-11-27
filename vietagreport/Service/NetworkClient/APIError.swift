@@ -20,4 +20,11 @@ struct APIError: Decodable {
     var message: String?
     var documentationUrl: String?
     var errors: [NetworkError]?
+    
+    func chain() {
+        let queue = DispatchGroup()
+        queue.enter()
+        
+    }
+    
 }

@@ -65,7 +65,7 @@ class BasicAuthenication: Authentication {
         guard let data = value.data(using: String.Encoding.utf8) else {
             return nil
         }
-        return data.base64EncodedString(options: [])
+        return data.base64EncodedString()
     }
 }
 
