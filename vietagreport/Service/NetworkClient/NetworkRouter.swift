@@ -22,12 +22,12 @@ enum NetworkRouter: NetworkRequestConvertible {
     
 
     // MARK: - HTTPMethod
-    var method: String {
+    var method: HTTPMethod {
         switch self {
         case .signup:
-            return "GET"
+            return .get
         default:
-            return "GET"
+            return .get
         }
     }
     
@@ -55,7 +55,7 @@ enum NetworkRouter: NetworkRequestConvertible {
             throw NetworkServiceError.invalidEndpoint
         }
         var request = URLRequest(url: url)
-        request.httpMethod = method
+        request.httpMethod = method.rawValue
 //        request.setValue(authorization.value, forHTTPHeaderField: authorization.key)
         return request
     }

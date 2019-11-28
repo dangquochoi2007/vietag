@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */; };
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				E693C2312377ACD90084DEC5 /* Environment.swift */,
 				E6A38620237F839E005279D2 /* NetworkServiceError.swift */,
 				E6372E5C2385BC080079674E /* APIError.swift */,
+				9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			files = (
 				E6F8EC8023514AF100FE1104 /* ExploreView.swift in Sources */,
 				E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */,
+				9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */,
 				E6C425F92335AC3A005F8A99 /* ForgotPasswordViewController.swift in Sources */,
 				E6C425F62335ABFF005F8A99 /* LoginViewController.swift in Sources */,
 				E6C426032335ACAA005F8A99 /* RegisterViewController.swift in Sources */,
