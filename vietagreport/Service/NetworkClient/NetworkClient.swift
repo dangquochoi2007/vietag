@@ -8,6 +8,7 @@
 
 import Foundation
 import Dispatch
+import UIKit
 //https://developer.apple.com/documentation/foundation/url_loading_system/handling_an_authentication_challenge
 //Handling an Authentication Challenge
 //
@@ -21,7 +22,7 @@ protocol NetworkClientProtocol {
     func cancelAllRequest()
 }
 
-class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
+class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     enum MIMEType: String {
         case json = "application/json"
@@ -38,6 +39,14 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
         "Content-type": MIMEType.json.rawValue,
         "Accept": MIMEType.json.rawValue
     ]
+    
+    private let userAgent: String = {
+        let info = Bundle.main.infoDictionary
+        let appVersion = info?["CFBundleShortVersionString"] as? String ?? "Unknown"
+        let bundleVersion = info?["CFBundleVersion"] as? String ?? "-"
+        let systemVersion = UIDevice.current.systemVersion
+        return "RC Mobile; iOS \(systemVersion); v\(appVersion) (\(bundleVersion))"
+    }()
     
     private lazy var decoder: JSONDecoder = {
         let decoder = JSONDecoder()
@@ -81,27 +90,6 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
                         networkServiceResult = try self.decoder.decode(T.self, from: jsonData)
                     }
                 } catch {
-                    networkServiceError = NetworkServiceError.decodeError
-                }
-                completion(networkServiceResult, networkServiceError)
-            }
-        }
-        self.dataTask?.resume()
-    }
-    
-    func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping ([T]?, NetworkServiceError?) -> Void) {
-        self.dataTask = session?.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                var networkServiceResult: [T]? = nil
-                var networkServiceError: NetworkServiceError? = nil
-                do {
-                    if let networkError = error {
-                        networkServiceError = self.convertNetworkServiceError(error: networkError)
-                    } else if let jsonData = data {
-                        networkServiceResult = try self.decoder.decode([T].self, from: jsonData)
-                    }
-                } catch let exception {
-                    debugPrint("exception ", exception)
                     networkServiceError = NetworkServiceError.decodeError
                 }
                 completion(networkServiceResult, networkServiceError)
@@ -193,12 +181,27 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDataDelegate {
         debugPrint("? Running request: \(urlRequest.httpMethod ?? "") - \(urlRequest.url?.absoluteString ?? "")")
     }
 
+    //https://github.com/radianttap/Avenue/blob/v2/NetworkSession.swift
     //URLSessionDelegate
-    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        debugPrint("didReceive")
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+//        refreshAccessToken() { newAccessToken:String in
+//            completionHandler(.useCredential, "Bearer \(newAccessToken)")
+//        }
+//        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodDefault ||
+//            challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic {
+//
+//            let credential = URLCredential(user: self.basicAuthUserName,
+//                                           password: self.basicAuthPassword,
+//                                           persistence: .forSession)
+//
+//            completionHandler(.useCredential, credential)
+//        }
+//        else {
+//            completionHandler(.performDefaultHandling, nil)
+//        }
+        completionHandler(.useCredential,
+                          URLCredential(user: "", password: "", persistence: URLCredential.Persistence.forSession))
     }
     
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        debugPrint("didCompleteWithError" , error)
-    }
+    
 }

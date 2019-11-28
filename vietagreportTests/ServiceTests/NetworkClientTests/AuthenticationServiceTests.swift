@@ -51,7 +51,7 @@ class AuthenticationServiceTests: XCTestCase {
         XCTAssert(accessTokenAuthentication.accessToken == accessToken)
     }
     
-    func testValidCallAuthenticateHTTPStatus200() {
+    func test_ValidCallAuthenticateHTTPStatus200() {
         // given
         let promise = expectation(description: "Login successful and status code: 304")
         guard let request = try? NetworkRouter.login.asURLRequest(with: basicAuthenication) else {
@@ -82,6 +82,39 @@ class AuthenticationServiceTests: XCTestCase {
         // then
         XCTAssertNil(responseError)
         XCTAssertEqual(statusCode, 200)
+    }
+    
+    func test_VerifyDataModelAPIReturnCorrect_when_CallAPIGetName() {
+        // given
+        let promise = expectation(description: "API return correct data format")
+        guard let request = try? NetworkRouter.login.asURLRequest(with: basicAuthenication) else {
+            XCTFail("Error: request invalid")
+            return
+        }
+        struct Model: Decodable {
+            var name: String
+        }
+        var model: [Model]?
+        var responseError: NetworkServiceError?
+        // when
+        NetworkClient.shared.sendRequest(request: request) { (response: [Model]?, error) in
+            guard error == nil else {
+                XCTFail("Error: \(error?.localizedDescription ?? "")")
+                responseError = error
+                promise.fulfill()
+                return
+            }
+            model = response
+            promise.fulfill()
+        }
+        wait(for: [promise], timeout: 5)
+        // then
+        XCTAssertNil(responseError)
+        XCTAssertNotNil(model)
+    }
+    
+    func test_refreshToken_when_AccessTokenExpired() {
+        
     }
 
     func testPerformanceExample() {
