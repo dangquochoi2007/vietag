@@ -15,14 +15,17 @@ import UIKit
 
 // Properly checks and handles the status code of the response
 protocol NetworkClientProtocol {
-    func sendRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void)
-    func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping (T?, NetworkServiceError?) -> Void)
-    func sendRequest(request: URLRequest, completion: @escaping (NetworkServiceError?) -> Void)
+    func sendRequest(request: URLRequest, success: @escaping (Data) -> Void, failure: @escaping (NetworkServiceError) -> Void)
+    func sendRequest<T: Decodable>(request: URLRequest, success: @escaping (T) -> Void, failure: @escaping (NetworkServiceError) -> Void)
+    func sendRequest(request: URLRequest, success: @escaping () -> Void,failure: @escaping(NetworkServiceError) -> Void)
     func cancelRequest(_ requestID: String)
     func cancelAllRequest()
 }
 
 class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
+
+    static let shared = NetworkClient()
+    
     
     enum MIMEType: String {
         case json = "application/json"
@@ -30,10 +33,8 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     }
     
     //
-    static let shared = NetworkClient()
     
     private var session: URLSession?
-    private var dataTask: URLSessionTask?
     private let queue = DispatchQueue(label: "network-client")
     private let defaultHeaders:[AnyHashable : Any] = [
         "Content-type": MIMEType.json.rawValue,
@@ -65,80 +66,150 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
     }
     
+    deinit {
+        session?.invalidateAndCancel()
+        session = nil
+    }
+    
     // MARK: - NetworkClientProtocol
-    func sendRequest(request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                completion(data, response, error)
-            }
-        }
-        self.dataTask?.resume()
-    }
-    
-    func sendRequest<T: Decodable>(request: URLRequest, completion: @escaping (T?, NetworkServiceError?) -> Void) {
-        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                var networkServiceResult: T? = nil
-                var networkServiceError: NetworkServiceError? = nil
+    func sendRequest(request: URLRequest, success: @escaping (Data) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
+        self.retry(attempts: 3, task: { (success, failure) in
+            self.session?.dataTask(with: request) { (data, response, error) in
                 do {
-                    if let networkError = error {
-                        networkServiceError = self.convertNetworkServiceError(error: networkError)
-                    } else if let res = response as? HTTPURLResponse,
-                        let networkError = self.validateStatusCode(response: res){
-                        networkServiceError = networkError
-                    } else if let jsonData = data {
-                        networkServiceResult = try self.decoder.decode(T.self, from: jsonData)
+                    switch (data, response, error) {
+                    case (nil, nil, let networkError?):
+                        try self.convertNetworkServiceError(error: networkError)
+                    case (let jsonData?, let response?, _) where try self.validStatusCode(response: response):
+                        success(jsonData)
+                    default:
+                        throw NetworkServiceError.noDataInResponse
                     }
-                } catch {
-                    networkServiceError = NetworkServiceError.decodeError
+                } catch let networkError as NetworkServiceError {
+                    failure(networkError)
+                } catch let exception {
+                    debugPrint("exception ", exception)
+                    failure(NetworkServiceError.decodeError)
                 }
-                completion(networkServiceResult, networkServiceError)
-            }
-        }
-        self.dataTask?.resume()
+            }.resume()
+        }, success: success, failure: failure)
     }
     
-    func sendRequest(request: URLRequest, completion: @escaping(NetworkServiceError?) -> Void) {
-        self.dataTask = session?.dataTask(with: request) { (data, response, error) in
-            DispatchQueue.main.async {
-                var networkServiceError: NetworkServiceError? = nil
-                if let networkError = error {
-                    networkServiceError = self.convertNetworkServiceError(error: networkError)
-                } else if let res = response as? HTTPURLResponse {
-                    networkServiceError = self.validateStatusCode(response: res)
+    func sendRequest<T: Decodable>(request: URLRequest, success: @escaping (T) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
+        retry(attempts: 3, task: { (success, failure) in
+            self.session?.dataTask(with: request) { (data, response, error) in
+                do {
+                    switch (data, response, error) {
+                    case (nil, nil, let networkError?):
+                        try self.convertNetworkServiceError(error: networkError)
+                    case (let jsonData?, let response?, _) where try self.validStatusCode(response: response):
+                        success(try self.decoder.decode(T.self, from: jsonData))
+                    default:
+                        throw NetworkServiceError.noDataInResponse
+                    }
+                } catch let networkError as NetworkServiceError {
+                    failure(networkError)
+                } catch let exception {
+                    debugPrint("exception ", exception)
+                    failure(NetworkServiceError.decodeError)
                 }
-                completion(networkServiceError)
-            }
-        }
-        self.dataTask?.resume()
+            }.resume()
+        }, success: success, failure: failure)
     }
     
-    private func convertNetworkServiceError(error: Error) -> NetworkServiceError? {
+    func sendRequest(request: URLRequest, success: @escaping () -> Void,failure: @escaping(NetworkServiceError) -> Void) {
+        self.retry(attempts: 3, task: { (success, failure) in
+            self.session?.dataTask(with: request) { (data, response, error) in
+                do {
+                    switch (data, response, error) {
+                    case (nil, nil, let networkError?):
+                        try self.convertNetworkServiceError(error: networkError)
+                    case (_, let response?, _) where try self.validStatusCode(response: response):
+                        success()
+                    default:
+                        throw NetworkServiceError.noDataInResponse
+                    }
+                } catch let networkError as NetworkServiceError {
+                    failure(networkError)
+                } catch let exception {
+                    debugPrint("exception ", exception)
+                    failure(NetworkServiceError.decodeError)
+                }
+            }.resume()
+        }, success: success, failure: failure)
+    }
+    
+    private func retry(attempts: Int,
+               task: @escaping (_ success: @escaping (Data) -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
+               success: @escaping (Data) -> Void,
+               failure: @escaping (NetworkServiceError) -> Void) {
+        task(success, { error in
+            if attempts > 0 {
+                self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
+            } else {
+                failure(error)
+            }
+        })
+    }
+    
+    private func retry<T: Decodable>(attempts: Int,
+                       task: @escaping (_ success: @escaping (T) -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
+                       success: @escaping (T) -> Void,
+                       failure: @escaping (NetworkServiceError) -> Void) {
+        task(success, { error in
+            if attempts > 0 {
+                self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
+            } else {
+                failure(error)
+            }
+        })
+    }
+    
+    private func retry(attempts: Int,
+               task: @escaping(_ success: @escaping () -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
+               success: @escaping () -> Void,
+               failure: @escaping (NetworkServiceError) -> Void) {
+        task(success, { error in
+            if attempts > 0 {
+                self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
+            } else {
+                failure(error)
+            }
+        })
+    }
+    
+    // MARK: NSRecoveryAttempterErrorKey
+    override func attemptRecovery(fromError error: Error, optionIndex recoveryOptionIndex: Int) -> Bool {
+        super.attemptRecovery(fromError: error, optionIndex: recoveryOptionIndex)
+        debugPrint("recoveryOptionIndex")
+        return true
+    }
+    
+    private func convertNetworkServiceError(error: Error) throws {
         switch error {
-        case URLError.notConnectedToInternet, URLError.networkConnectionLost:
-            return NetworkServiceError.noInternet
+        case URLError.notConnectedToInternet, URLError.networkConnectionLost, URLError.cannotLoadFromNetwork:
+            throw NetworkServiceError.noInternet
         case URLError.cannotFindHost:
-            return NetworkServiceError.decodeError
+            throw NetworkServiceError.decodeError
         case URLError.cancelled:
-            return NetworkServiceError.userCancelled
+            throw NetworkServiceError.userCancelled
         default:
-            return NetworkServiceError.invalidRequestURL
+            throw NetworkServiceError.invalidRequestURL
         }
     }
     
-    private func validateStatusCode(response: HTTPURLResponse) -> NetworkServiceError? {
-        switch response.statusCode {
-        case 200...299:
-            //success
-            return nil
+    private func validStatusCode(response: URLResponse) throws -> Bool {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkServiceError.apiError
+        }
+        switch httpResponse.statusCode {
         case 401:
-            return NetworkServiceError.authenticationError
+            throw NetworkServiceError.authenticationError
         case 400...499:
-            return NetworkServiceError.badRequest
+            throw NetworkServiceError.badRequest
         case 500...599:
-            return NetworkServiceError.internalServerError
+            throw NetworkServiceError.internalServerError
         default:
-            return NetworkServiceError.apiError
+            return 200...299 ~= httpResponse.statusCode
         }
     }
     

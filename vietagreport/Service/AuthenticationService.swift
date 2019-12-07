@@ -8,50 +8,24 @@
 
 import Foundation
 
-enum AuthenticationType {
-    case none
-    case headers
-    case parameters
-}
-
-class Authentication {
-
-    var type: AuthenticationType {
-        return .none
-    }
+protocol Authentication {
     
-    var key: String {
-        return ""
-    }
+    var key: String? { get }
     
-    var value: String {
-        return ""
-    }
-    
-    init() {
-        
-    }
-    
-    func headers() -> [String: String] {
-        return [key: value]
-    }
+    var value: String? { get }
 }
 
 
-class BasicAuthenication: Authentication {
+class BasicAuthentication: Authentication {
     
     var username: String
     var password: String
     
-    override var type: AuthenticationType {
-        return .headers
-    }
-
-    override var key: String {
+    var key: String? {
         return "Authorization"
     }
     
-    override var value: String {
+    var value: String? {
         let authorizationValue =  "\(self.username):\(self.password)"
         return "Basic \(convertStringToBase64(value: authorizationValue) ?? "")"
     }
@@ -73,15 +47,11 @@ class TokenAuthentication: Authentication {
     
     var token: String
     
-    override var type: AuthenticationType {
-        return AuthenticationType.headers
-    }
-    
-    override var key: String {
+    var key: String? {
         return "Authorization"
     }
     
-    override var value: String {
+    var value: String? {
         return "bearer \(self.token)"
     }
     
@@ -94,15 +64,11 @@ class AccessTokenAuthentication: Authentication {
     
     var accessToken: String
     
-    override var type: AuthenticationType {
-        return AuthenticationType.parameters
-    }
-    
-    override var key: String {
+    var key: String? {
         return "access_token"
     }
     
-    override var value: String {
+    var value: String? {
         return self.accessToken
     }
     
