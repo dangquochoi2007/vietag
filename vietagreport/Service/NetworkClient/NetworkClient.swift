@@ -118,6 +118,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     func sendRequest(request: URLRequest, success: @escaping () -> Void,failure: @escaping(NetworkServiceError) -> Void) {
         self.retry(attempts: 3, task: { (success, failure) in
+            self.logRequests(request: request)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
                     switch (data, response, error) {
@@ -143,7 +144,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                success: @escaping (Data) -> Void,
                failure: @escaping (NetworkServiceError) -> Void) {
         task(success, { error in
-            if attempts > 0 {
+            if attempts > 1 {
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
                 failure(error)
@@ -156,7 +157,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                        success: @escaping (T) -> Void,
                        failure: @escaping (NetworkServiceError) -> Void) {
         task(success, { error in
-            if attempts > 0 {
+            if attempts > 1 {
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
                 failure(error)
@@ -169,7 +170,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                success: @escaping () -> Void,
                failure: @escaping (NetworkServiceError) -> Void) {
         task(success, { error in
-            if attempts > 0 {
+            if attempts > 1 {
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
                 failure(error)
@@ -213,6 +214,10 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         }
     }
     
+    private func logWrite(request: URLRequest, data: Data?, response: URLResponse?, error: Error) {
+        
+    }
+    
     func cancelRequest(_ requestID: String) {
         let semaphore = DispatchSemaphore(value: 0)
         session?.getTasksWithCompletionHandler({ (dataTasks, uploadTasks, downloadTasks) in
@@ -248,8 +253,8 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         _ = semaphore.wait(timeout: .now() + 60.0)
     }
     
-    func logRequests(urlRequest: URLRequest) {
-        debugPrint("? Running request: \(urlRequest.httpMethod ?? "") - \(urlRequest.url?.absoluteString ?? "")")
+    func logRequests(request: URLRequest?, data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) {
+        debugPrint("[Request] \(request?.httpMethod ?? "")", request?.url?.absoluteString ?? "", separator: " - ", terminator: "\n")
     }
 
     //https://github.com/radianttap/Avenue/blob/v2/NetworkSession.swift

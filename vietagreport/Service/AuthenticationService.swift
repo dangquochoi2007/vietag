@@ -15,6 +15,15 @@ protocol Authentication {
     var value: String? { get }
 }
 
+class NoneAuthentication: Authentication {
+    var key: String? {
+        return nil
+    }
+    
+    var value: String? {
+        return nil
+    }
+}
 
 class BasicAuthentication: Authentication {
     

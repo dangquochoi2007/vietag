@@ -15,40 +15,37 @@ class AuthenticationServiceTests: XCTestCase {
     var password: String = "password"
     var accessToken: String = "accessToken"
     
-    var authentication: Authentication!
-    var basicAuthenication: BasicAuthenication!
+    var noneAuthentication: Authentication!
+    var basicAuthenication: BasicAuthentication!
     var accessTokenAuthentication: AccessTokenAuthentication!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
-        authentication = Authentication()
-        basicAuthenication = BasicAuthenication(username: username, password: password)
+        noneAuthentication = NoneAuthentication()
+        basicAuthenication = BasicAuthentication(username: username, password: password)
         accessTokenAuthentication = AccessTokenAuthentication(accessToken: accessToken)
     }
 
     override func tearDown() {
         super.tearDown()
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        authentication = nil
+        noneAuthentication = nil
         basicAuthenication = nil
         accessTokenAuthentication = nil
     }
     
     func testHeadersMustHaveKeyValue() {
-        XCTAssert(authentication.headers().count > 0, "Authorize must have key value")
-        XCTAssert(authentication.key == "")
-        XCTAssert(authentication.value == "")
+        XCTAssert(noneAuthentication.key == nil, "Authorize must have key value")
+        XCTAssert(noneAuthentication.value == nil, "Authorize must have key value")
         
-        XCTAssert(basicAuthenication.headers().count > 0, "Basic Auth must have username/password")
         XCTAssertTrue(basicAuthenication.key == "Authorization")
         XCTAssert(basicAuthenication.value != "Basic  ")
-        XCTAssert(basicAuthenication.username == self.username)
-        XCTAssert(basicAuthenication.password == self.password)
+        XCTAssert(basicAuthenication.username == self.username, "Authorize must have username")
+        XCTAssert(basicAuthenication.password == self.password, "Authorize must have password")
         
-        XCTAssert(accessTokenAuthentication.headers().count > 0, "Access Token must have token")
-        XCTAssert(accessTokenAuthentication.key == "access_token")
-        XCTAssert(accessTokenAuthentication.accessToken == accessToken)
+        XCTAssert(accessTokenAuthentication.key == "access_token", "Access Token must have token")
+        XCTAssert(accessTokenAuthentication.accessToken == accessToken, "Access Token must have token")
     }
     
     func test_ValidCallAuthenticateHTTPStatus200() {
@@ -56,28 +53,22 @@ class AuthenticationServiceTests: XCTestCase {
         let promise = expectation(description: "Login successful and status code: 304")
         guard let request = try? NetworkRouter.login.asURLRequest(with: basicAuthenication) else {
             XCTFail("Error: request invalid")
+            promise.fulfill()
             return
         }
         var statusCode: Int?
         var responseError: Error?
         
         // when
-        NetworkClient.shared.sendRequest(request: request) { (data, response, error) in
-            guard error == nil else {
-                XCTFail("Error: \(error?.localizedDescription ?? "")")
-                responseError = error
-                promise.fulfill()
-                return
-            }
-            guard let res = response as? HTTPURLResponse else {
-                XCTFail("Error: have no http response")
-                promise.fulfill()
-                return
-            }
-            statusCode = res.statusCode
+        NetworkClient.shared.sendRequest(request: request, success: {
+            statusCode = 200
+            promise.fulfill()
+        }) { (error) in
+            XCTFail("Error: \(error.message())")
+            responseError = error
             promise.fulfill()
         }
-        wait(for: [promise], timeout: 5)
+        wait(for: [promise], timeout: 15)
         
         // then
         XCTAssertNil(responseError)
@@ -86,31 +77,7 @@ class AuthenticationServiceTests: XCTestCase {
     
     func test_VerifyDataModelAPIReturnCorrect_when_CallAPIGetName() {
         // given
-        let promise = expectation(description: "API return correct data format")
-        guard let request = try? NetworkRouter.login.asURLRequest(with: basicAuthenication) else {
-            XCTFail("Error: request invalid")
-            return
-        }
-        struct Model: Decodable {
-            var name: String
-        }
-        var model: [Model]?
-        var responseError: NetworkServiceError?
-        // when
-        NetworkClient.shared.sendRequest(request: request) { (response: [Model]?, error) in
-            guard error == nil else {
-                XCTFail("Error: \(error?.localizedDescription ?? "")")
-                responseError = error
-                promise.fulfill()
-                return
-            }
-            model = response
-            promise.fulfill()
-        }
-        wait(for: [promise], timeout: 5)
-        // then
-        XCTAssertNil(responseError)
-        XCTAssertNotNil(model)
+       
     }
     
     func test_refreshToken_when_AccessTokenExpired() {

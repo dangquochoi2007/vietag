@@ -33,7 +33,7 @@ enum NetworkRouter: NetworkRequestConvertible {
     }
     
     var baseURL: URL? {
-        return URL(string: "https://api.github.com")
+        return URL(string: "https://api.github.com/authorizations")
     }
     
     var path: String {
@@ -57,7 +57,9 @@ enum NetworkRouter: NetworkRequestConvertible {
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
-//        request.setValue(authorization.value, forHTTPHeaderField: authorization.key)
+        if let value = authorization.value, let key = authorization.key {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
         return request
     }
 }
