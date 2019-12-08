@@ -120,6 +120,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         self.retry(attempts: 3, task: { (success, failure) in
             self.logRequests(request: request)
             self.session?.dataTask(with: request) { (data, response, error) in
+                self.logRequests(request: nil, data: data, response: response, error: error)
                 do {
                     switch (data, response, error) {
                     case (nil, nil, let networkError?):
@@ -254,7 +255,16 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     }
     
     func logRequests(request: URLRequest?, data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) {
-        debugPrint("[Request] \(request?.httpMethod ?? "")", request?.url?.absoluteString ?? "", separator: " - ", terminator: "\n")
+        if let request = request {
+            debugPrint("[Request] \(request.httpMethod ?? "")", request.url?.absoluteString ?? "", separator: " - ", terminator: "\n")
+        }
+        if let data = data, let httpResponse = response as? HTTPURLResponse {
+            let jsonString = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            debugPrint("[Response] \(httpResponse.statusCode) ", jsonString ?? "invalid json")
+        }
+        if let error = error {
+            debugPrint("[Response] ", error)
+        }
     }
 
     //https://github.com/radianttap/Avenue/blob/v2/NetworkSession.swift
