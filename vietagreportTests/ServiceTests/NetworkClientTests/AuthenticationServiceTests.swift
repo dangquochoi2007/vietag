@@ -68,7 +68,7 @@ class AuthenticationServiceTests: XCTestCase {
             responseError = error
             promise.fulfill()
         }
-        wait(for: [promise], timeout: 15)
+        wait(for: [promise], timeout: 50)
         
         // then
         XCTAssertNil(responseError)

@@ -144,10 +144,13 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                task: @escaping (_ success: @escaping (Data) -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
                success: @escaping (Data) -> Void,
                failure: @escaping (NetworkServiceError) -> Void) {
+        let semaphore = DispatchSemaphore(value: 0)
         task(success, { error in
             if attempts > 1 {
+                _ = semaphore.wait(timeout: DispatchTime.now() + 2)
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
+                semaphore.signal()
                 failure(error)
             }
         })
@@ -157,10 +160,13 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                        task: @escaping (_ success: @escaping (T) -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
                        success: @escaping (T) -> Void,
                        failure: @escaping (NetworkServiceError) -> Void) {
+        let semaphore = DispatchSemaphore(value: 0)
         task(success, { error in
             if attempts > 1 {
+                _ = semaphore.wait(timeout: DispatchTime.now() + 2)
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
+                semaphore.signal()
                 failure(error)
             }
         })
@@ -170,10 +176,13 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
                task: @escaping(_ success: @escaping () -> Void, _ failure: @escaping (NetworkServiceError) -> Void) -> Void,
                success: @escaping () -> Void,
                failure: @escaping (NetworkServiceError) -> Void) {
+        let semaphore = DispatchSemaphore(value: 0)
         task(success, { error in
             if attempts > 1 {
+                _ = semaphore.wait(timeout: DispatchTime.now() + 2)
                 self.retry(attempts: attempts - 1, task: task, success: success, failure: failure)
             } else {
+                semaphore.signal()
                 failure(error)
             }
         })
