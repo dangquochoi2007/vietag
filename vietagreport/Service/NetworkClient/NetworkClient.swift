@@ -74,8 +74,10 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     // MARK: - NetworkClientProtocol
     func sendRequest(request: URLRequest, success: @escaping (Data) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
         self.retry(attempts: 3, task: { (success, failure) in
+            self.logRequests(request: request)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
+                    self.logRequests(request: nil, data: data, response: response, error: error)
                     switch (data, response, error) {
                     case (nil, nil, let networkError?):
                         try self.convertNetworkServiceError(error: networkError)
@@ -96,8 +98,10 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     func sendRequest<T: Decodable>(request: URLRequest, success: @escaping (T) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
         retry(attempts: 3, task: { (success, failure) in
+            self.logRequests(request: request)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
+                    self.logRequests(request: nil, data: data, response: response, error: error)
                     switch (data, response, error) {
                     case (nil, nil, let networkError?):
                         try self.convertNetworkServiceError(error: networkError)
@@ -120,8 +124,8 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         self.retry(attempts: 3, task: { (success, failure) in
             self.logRequests(request: request)
             self.session?.dataTask(with: request) { (data, response, error) in
-                self.logRequests(request: nil, data: data, response: response, error: error)
                 do {
+                    self.logRequests(request: nil, data: data, response: response, error: error)
                     switch (data, response, error) {
                     case (nil, nil, let networkError?):
                         try self.convertNetworkServiceError(error: networkError)
@@ -187,14 +191,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
             }
         })
     }
-    
-    // MARK: NSRecoveryAttempterErrorKey
-    override func attemptRecovery(fromError error: Error, optionIndex recoveryOptionIndex: Int) -> Bool {
-        super.attemptRecovery(fromError: error, optionIndex: recoveryOptionIndex)
-        debugPrint("recoveryOptionIndex")
-        return true
-    }
-    
+
     private func convertNetworkServiceError(error: Error) throws {
         switch error {
         case URLError.notConnectedToInternet, URLError.networkConnectionLost, URLError.cannotLoadFromNetwork:
