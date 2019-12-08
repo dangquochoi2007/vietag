@@ -210,6 +210,8 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
             throw NetworkServiceError.apiError
         }
         switch httpResponse.statusCode {
+        case 300...399:
+            throw NetworkServiceError.invalidRequestURL
         case 401:
             throw NetworkServiceError.authenticationError
         case 400...499:
@@ -262,14 +264,14 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     func logRequests(request: URLRequest?, data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) {
         if let request = request {
-            debugPrint("[Request] \(request.httpMethod ?? "")", request.url?.absoluteString ?? "", separator: " - ", terminator: "\n")
+            debugPrint("⚡[Request] \(request.httpMethod ?? "")", request.url?.absoluteString ?? "", separator: " - ", terminator: "\n")
         }
         if let data = data, let httpResponse = response as? HTTPURLResponse {
             let jsonString = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            debugPrint("[Response] \(httpResponse.statusCode) ", jsonString ?? "invalid json")
+            debugPrint("😕 [Response] \(httpResponse.statusCode) ", jsonString ?? "invalid json")
         }
         if let error = error {
-            debugPrint("[Response] ", error)
+            debugPrint("😕 [Response] ", error)
         }
     }
 
