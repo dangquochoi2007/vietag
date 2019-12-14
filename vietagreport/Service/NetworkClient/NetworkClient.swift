@@ -74,7 +74,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     // MARK: - NetworkClientProtocol
     func sendRequest(request: URLRequest, success: @escaping (Data) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
         self.retry(attempts: 3, task: { (success, failure) in
-            self.logRequests(request: request)
+            self.logRequests(request: request, data: request.httpBody)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
                     self.logRequests(request: nil, data: data, response: response, error: error)
@@ -98,7 +98,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     func sendRequest<T: Decodable>(request: URLRequest, success: @escaping (T) -> Void, failure: @escaping (NetworkServiceError) -> Void) {
         retry(attempts: 3, task: { (success, failure) in
-            self.logRequests(request: request)
+            self.logRequests(request: request, data: request.httpBody)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
                     self.logRequests(request: nil, data: data, response: response, error: error)
@@ -122,7 +122,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     
     func sendRequest(request: URLRequest, success: @escaping () -> Void,failure: @escaping(NetworkServiceError) -> Void) {
         self.retry(attempts: 3, task: { (success, failure) in
-            self.logRequests(request: request)
+            self.logRequests(request: request, data: request.httpBody)
             self.session?.dataTask(with: request) { (data, response, error) in
                 do {
                     self.logRequests(request: nil, data: data, response: response, error: error)
@@ -268,7 +268,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         }
         if let data = data, let httpResponse = response as? HTTPURLResponse {
             let jsonString = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            debugPrint("😕 [Response] \(httpResponse.statusCode) ", jsonString ?? "invalid json")
+            debugPrint("😘 [Response] \(httpResponse.statusCode) ", jsonString ?? "invalid json")
         }
         if let error = error {
             debugPrint("😕 [Response] ", error)
@@ -278,6 +278,7 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     //https://github.com/radianttap/Avenue/blob/v2/NetworkSession.swift
     //URLSessionDelegate
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        debugPrint("URLAuthenticationChallenge ", challenge)
 //        refreshAccessToken() { newAccessToken:String in
 //            completionHandler(.useCredential, "Bearer \(newAccessToken)")
 //        }
@@ -291,11 +292,12 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
 //            completionHandler(.useCredential, credential)
 //        }
 //        else {
-//            completionHandler(.performDefaultHandling, nil)
+            completionHandler(.performDefaultHandling, nil)
 //        }
-        completionHandler(.useCredential,
-                          URLCredential(user: "", password: "", persistence: URLCredential.Persistence.forSession))
+//        completionHandler(.useCredential,
+//                          URLCredential(user: "", password: "", persistence: URLCredential.Persistence.forSession))
     }
+    
     
     
 }

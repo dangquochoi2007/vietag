@@ -33,7 +33,7 @@ enum NetworkRouter: NetworkRequestConvertible {
     }
     
     var baseURL: URL? {
-        return URL(string: "https://api.github.com/user")
+        return URL(string: "https://api.github.com/graphql")
     }
     
     var path: String {

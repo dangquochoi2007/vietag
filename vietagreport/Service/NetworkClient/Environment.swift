@@ -8,9 +8,3 @@
 
 import Foundation
 
-enum Environment {
-    case Development
-    case Alpha
-    case Staging
-    case Production
-}
