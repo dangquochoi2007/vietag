@@ -223,10 +223,6 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
         }
     }
     
-    private func logWrite(request: URLRequest, data: Data?, response: URLResponse?, error: Error) {
-        
-    }
-    
     func cancelRequest(_ requestID: String) {
         let semaphore = DispatchSemaphore(value: 0)
         session?.getTasksWithCompletionHandler({ (dataTasks, uploadTasks, downloadTasks) in

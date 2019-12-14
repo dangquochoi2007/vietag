@@ -11,6 +11,7 @@ import SafariServices
 
 protocol NetworkRequestConvertible {
     func asURLRequest(with authorization: Authentication) throws -> URLRequest
+    func asURLRequest() throws -> URLRequest
 }
 
 enum NetworkRouter: NetworkRequestConvertible {
