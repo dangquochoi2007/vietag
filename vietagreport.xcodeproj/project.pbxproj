@@ -13,6 +13,7 @@
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
 		E645EAAC238A1A8E00095BFA /* TransferServiceScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */; };
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
+		E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6759A4123C973AA001068D3 /* ExploreView.swift */; };
 		E693C2322377ACD90084DEC5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C2312377ACD90084DEC5 /* Environment.swift */; };
 		E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A38620237F839E005279D2 /* NetworkServiceError.swift */; };
 		E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A38622237F8BBD005279D2 /* AuthenticationService.swift */; };
@@ -31,9 +32,18 @@
 		E6DC3BA8232E3443009DDD8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6DC3BA6232E3443009DDD8B /* LaunchScreen.storyboard */; };
 		E6DC3BB3232E3443009DDD8B /* vietagreportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC3BB2232E3443009DDD8B /* vietagreportTests.swift */; };
 		E6DC3BBE232E3443009DDD8B /* vietagreportUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DC3BBD232E3443009DDD8B /* vietagreportUITests.swift */; };
-		E6F8EC8023514AF100FE1104 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F8EC7F23514AF100FE1104 /* ExploreView.swift */; };
+		E6F1804B23D2F7F800CE3A10 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1804A23D2F7F800CE3A10 /* ScheduleViewController.swift */; };
+		E6F1804D23D2F97A00CE3A10 /* ExploreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1804C23D2F97A00CE3A10 /* ExploreInteractor.swift */; };
+		E6F1804F23D2F98100CE3A10 /* ExplorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1804E23D2F98100CE3A10 /* ExplorePresenter.swift */; };
+		E6F1805123D2F9BE00CE3A10 /* ExploreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805023D2F9BE00CE3A10 /* ExploreRouter.swift */; };
+		E6F1805423D2FE8200CE3A10 /* ScheduleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805323D2FE8100CE3A10 /* ScheduleInteractor.swift */; };
+		E6F1805623D2FE9300CE3A10 /* SchedulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805523D2FE9300CE3A10 /* SchedulePresenter.swift */; };
+		E6F1805823D2FE9C00CE3A10 /* ScheduleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805723D2FE9C00CE3A10 /* ScheduleRouter.swift */; };
+		E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805923D301A300CE3A10 /* ScheduleView.swift */; };
+		E6F1805D23D3138700CE3A10 /* DrinkWaterNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F1805C23D3138700CE3A10 /* DrinkWaterNavigationController.swift */; };
 		E6FAB66C23486EBA00CED3B2 /* TransferServiceScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FAB66B23486EBA00CED3B2 /* TransferServiceScanner.swift */; };
 		E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FAB66F2348975A00CED3B2 /* ExploreViewController.swift */; };
+		E6FBC5B823EFC228003327CA /* PlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FBC5B723EFC228003327CA /* PlanCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +70,7 @@
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferServiceScannerTests.swift; sourceTree = "<group>"; };
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		E6759A4123C973AA001068D3 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		E693C2312377ACD90084DEC5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E6A38620237F839E005279D2 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
 		E6A38622237F8BBD005279D2 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
@@ -88,10 +99,19 @@
 		E6DC3BB9232E3443009DDD8B /* vietagreportUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vietagreportUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6DC3BBD232E3443009DDD8B /* vietagreportUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vietagreportUITests.swift; sourceTree = "<group>"; };
 		E6DC3BBF232E3443009DDD8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6F8EC7F23514AF100FE1104 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		E6F1804A23D2F7F800CE3A10 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		E6F1804C23D2F97A00CE3A10 /* ExploreInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreInteractor.swift; sourceTree = "<group>"; };
+		E6F1804E23D2F98100CE3A10 /* ExplorePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePresenter.swift; sourceTree = "<group>"; };
+		E6F1805023D2F9BE00CE3A10 /* ExploreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreRouter.swift; sourceTree = "<group>"; };
+		E6F1805323D2FE8100CE3A10 /* ScheduleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleInteractor.swift; sourceTree = "<group>"; };
+		E6F1805523D2FE9300CE3A10 /* SchedulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePresenter.swift; sourceTree = "<group>"; };
+		E6F1805723D2FE9C00CE3A10 /* ScheduleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRouter.swift; sourceTree = "<group>"; };
+		E6F1805923D301A300CE3A10 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		E6F1805C23D3138700CE3A10 /* DrinkWaterNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterNavigationController.swift; sourceTree = "<group>"; };
 		E6FAB66B23486EBA00CED3B2 /* TransferServiceScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferServiceScanner.swift; sourceTree = "<group>"; };
 		E6FAB66D234894FC00CED3B2 /* vietagreport.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = vietagreport.entitlements; sourceTree = "<group>"; };
 		E6FAB66F2348975A00CED3B2 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		E6FBC5B723EFC228003327CA /* PlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +169,15 @@
 			path = NetworkClient;
 			sourceTree = "<group>";
 		};
+		E6759A4023C9738E001068D3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E6759A4123C973AA001068D3 /* ExploreView.swift */,
+				E6FBC5B723EFC228003327CA /* PlanCollectionViewCell.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E6A502C72337ADE800E8128C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +200,7 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E6F1804923D2F7D800CE3A10 /* Schedule */,
 				E6FAB66E2348974200CED3B2 /* Explore */,
 				E6C426002335AC8D005F8A99 /* Register */,
 				E6C425FD2335AC5E005F8A99 /* ChangePassword */,
@@ -249,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				E6FAB66D234894FC00CED3B2 /* vietagreport.entitlements */,
+				E6F1805B23D3134300CE3A10 /* CustomView */,
 				E6FAB66A23486EA700CED3B2 /* Service */,
 				E6C425F32335ABC6005F8A99 /* Scene */,
 				E6DC3B9A232E3441009DDD8B /* AppDelegate.swift */,
@@ -279,6 +310,34 @@
 			path = vietagreportUITests;
 			sourceTree = "<group>";
 		};
+		E6F1804923D2F7D800CE3A10 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				E6F1805223D2FC5E00CE3A10 /* UI */,
+				E6F1804A23D2F7F800CE3A10 /* ScheduleViewController.swift */,
+				E6F1805323D2FE8100CE3A10 /* ScheduleInteractor.swift */,
+				E6F1805523D2FE9300CE3A10 /* SchedulePresenter.swift */,
+				E6F1805723D2FE9C00CE3A10 /* ScheduleRouter.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		E6F1805223D2FC5E00CE3A10 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E6F1805923D301A300CE3A10 /* ScheduleView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		E6F1805B23D3134300CE3A10 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				E6F1805C23D3138700CE3A10 /* DrinkWaterNavigationController.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
 		E6FAB66A23486EA700CED3B2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,8 +352,11 @@
 		E6FAB66E2348974200CED3B2 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				E6759A4023C9738E001068D3 /* UI */,
 				E6FAB66F2348975A00CED3B2 /* ExploreViewController.swift */,
-				E6F8EC7F23514AF100FE1104 /* ExploreView.swift */,
+				E6F1804C23D2F97A00CE3A10 /* ExploreInteractor.swift */,
+				E6F1804E23D2F98100CE3A10 /* ExplorePresenter.swift */,
+				E6F1805023D2F9BE00CE3A10 /* ExploreRouter.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -429,21 +491,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6F8EC8023514AF100FE1104 /* ExploreView.swift in Sources */,
+				E6F1804F23D2F98100CE3A10 /* ExplorePresenter.swift in Sources */,
+				E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */,
 				E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */,
+				E6FBC5B823EFC228003327CA /* PlanCollectionViewCell.swift in Sources */,
 				9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */,
 				E6C425F92335AC3A005F8A99 /* ForgotPasswordViewController.swift in Sources */,
 				E6C425F62335ABFF005F8A99 /* LoginViewController.swift in Sources */,
 				E6C426032335ACAA005F8A99 /* RegisterViewController.swift in Sources */,
+				E6F1805423D2FE8200CE3A10 /* ScheduleInteractor.swift in Sources */,
 				E6C426072335B562005F8A99 /* LoginPresenter.swift in Sources */,
 				E6DC3B9B232E3441009DDD8B /* AppDelegate.swift in Sources */,
+				E6F1805D23D3138700CE3A10 /* DrinkWaterNavigationController.swift in Sources */,
 				E6C426052335B3B1005F8A99 /* LoginInteractor.swift in Sources */,
+				E6F1804D23D2F97A00CE3A10 /* ExploreInteractor.swift in Sources */,
+				E6F1805123D2F9BE00CE3A10 /* ExploreRouter.swift in Sources */,
+				E6F1804B23D2F7F800CE3A10 /* ScheduleViewController.swift in Sources */,
 				E6C425FF2335AC87005F8A99 /* ChangePasswordViewController.swift in Sources */,
 				E6DC3BA3232E3441009DDD8B /* vietagreport.xcdatamodeld in Sources */,
 				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
+				E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
+				E6F1805623D2FE9300CE3A10 /* SchedulePresenter.swift in Sources */,
 				E6372E5D2385BC080079674E /* APIError.swift in Sources */,
+				E6F1805823D2FE9C00CE3A10 /* ScheduleRouter.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,
@@ -569,7 +641,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = vietagreport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,7 +764,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = vietagreport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -871,7 +943,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = vietagreport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -893,7 +965,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = vietagreport/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

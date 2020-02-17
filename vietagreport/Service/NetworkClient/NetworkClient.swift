@@ -60,7 +60,6 @@ class NetworkClient:NSObject, NetworkClientProtocol, URLSessionDelegate {
     override init() {
         super.init()
         let configuration = URLSessionConfiguration.default
-        configuration.urlCache = URLCache(memoryCapacity: 0, diskCapacity: 0)
         configuration.httpMaximumConnectionsPerHost = 2
         configuration.httpAdditionalHeaders = defaultHeaders
         self.session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)

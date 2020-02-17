@@ -5,11 +5,20 @@
 //  Created by Hoi on 9/22/19.
 //  Copyright © 2019 Hoi. All rights reserved.
 //
+import UIKit
 
-import SwiftUI
 
-struct LoginView: View {
-    var body: some View {
-        Text("Profile for: ")
+class LoginView: UIView {
+    
+    init() {
+        super.init(frame: CGRect.zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
     }
 }
