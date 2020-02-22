@@ -13,6 +13,7 @@ protocol ExploreDisplayLogic: class {
 }
 
 class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     var interactor: ExploreBusinessLogic?
     var router: ExploreRoutingLogic?
     
@@ -49,8 +50,6 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        configureWhenAppear()
     }
     
     private func configureWhenInit() {
@@ -83,20 +82,19 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     
     private func configureWhenAppear() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Water Today"
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath)
-        cell.backgroundColor = UIColor.green
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
         return cell
     }
     

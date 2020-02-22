@@ -15,6 +15,8 @@ class ExploreView: UIView {
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.white
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(PlanCollectionViewCell.self, forCellWithReuseIdentifier: "PlanCollectionViewCell")
         return collectionView
     }()
