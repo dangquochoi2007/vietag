@@ -24,6 +24,8 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
         return view
     }()
     
+    private var exploreElements: [ExploreViewModel.ExploreElement] = [.Profile, .Plan, .Drink]
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         configureWhenInit()
@@ -86,11 +88,19 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 7
+        return exploreElements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        let element = self.exploreElements[section]
+        switch element {
+        case .Profile:
+            return 1
+        case .Plan:
+            return 1
+        case .Drink:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
