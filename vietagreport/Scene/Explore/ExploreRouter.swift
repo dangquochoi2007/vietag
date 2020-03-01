@@ -10,6 +10,7 @@ import Foundation
 
 protocol ExploreRoutingLogic {
     func navigateToSchedule()
+    func navigateToDrinkWater()
 }
 
 class ExploreRouter: ExploreRoutingLogic {
@@ -18,5 +19,10 @@ class ExploreRouter: ExploreRoutingLogic {
     func navigateToSchedule() {
         let scheduleController = ScheduleViewController()
         viewController?.present(scheduleController, animated: true, completion: nil)
+    }
+    
+    func navigateToDrinkWater() {
+        let drinkWaterController = DrinkWaterViewController()
+        viewController?.present(drinkWaterController, animated: true, completion: nil)
     }
 }

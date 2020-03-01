@@ -17,14 +17,14 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     var interactor: ExploreBusinessLogic?
     var router: ExploreRoutingLogic?
     
-    lazy var exploreView: ExploreView = {
+    lazy var exploreView: ExploreView = { [unowned self] in
         let view = ExploreView()
         view.exploreCollectionView.delegate = self
         view.exploreCollectionView.dataSource = self
         return view
     }()
     
-    private var exploreElements: [ExploreViewModel.ExploreElement] = [.Profile, .Plan, .Drink]
+    private var exploreElements: [ExploreViewModel.ExploreElement] = [.Profile, .Drink, .Plan]
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -104,15 +104,36 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
-        return cell
+        let element = self.exploreElements[indexPath.section]
+        switch element {
+        case .Profile:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionViewCell", for: indexPath) as! ProfileCollectionViewCell
+            return cell
+        case .Plan:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
+            return cell
+        case .Drink:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrinkCollectionViewCell", for: indexPath) as! DrinkCollectionViewCell
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 128.0)
+        let element = self.exploreElements[indexPath.section]
+        switch element {
+        case .Profile:
+            return CGSize(width: collectionView.bounds.width, height: 340.0)
+        case .Drink:
+            return CGSize(width: collectionView.bounds.width, height: 60.0)
+        case .Plan:
+            return CGSize(width: collectionView.bounds.width, height: 100.0)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+        let element = self.exploreElements[indexPath.section]
+        if element == .Drink {
+            router?.navigateToDrinkWater()
+        }
     }
 }

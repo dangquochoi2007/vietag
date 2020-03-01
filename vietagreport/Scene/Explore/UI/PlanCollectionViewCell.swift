@@ -10,7 +10,7 @@ import UIKit
 
 class PlanCollectionViewCell: UICollectionViewCell {
     
-    lazy var notificationButton: UIButton = {
+    lazy var notificationButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setTitle("Notification", for: .normal)
         button.setTitleColor(UIColor.gray, for: .normal)
@@ -18,7 +18,7 @@ class PlanCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var scheduleButton: UIButton = {
+    lazy var scheduleButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setTitle("Schedule", for: .normal)
         button.setTitleColor(UIColor.gray, for: .normal)
@@ -26,7 +26,7 @@ class PlanCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var settingButton: UIButton = {
+    lazy var settingButton: UIButton = { [unowned self] in
         let button = UIButton()
         button.setTitle("Settings", for: .normal)
         button.setTitleColor(UIColor.gray, for: .normal)
@@ -48,15 +48,20 @@ class PlanCollectionViewCell: UICollectionViewCell {
         for button in [notificationButton, scheduleButton, settingButton] {
             addSubview(button)
         }
-        let views = [
+        let viewsDictionary = [
             "notificationButton": notificationButton,
             "scheduleButton": scheduleButton,
             "settingButton": settingButton,
         ]
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[notificationButton]-[scheduleButton(==notificationButton)]-[settingButton(==notificationButton)]-20-|",
-                                                                 options: [.alignAllCenterY],
-                                                              metrics: nil,
-                                                              views: views)
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[notificationButton]",
+                                                                 options: [],
+                                                                 metrics: nil,
+                                                                 views: viewsDictionary)
+        let horizontalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[notificationButton]-[scheduleButton(==notificationButton)]-[settingButton(==notificationButton)]-20-|",
+                                                                  options: [.alignAllFirstBaseline],
+                                                                  metrics: nil,
+                                                                  views: viewsDictionary)
         addConstraints(verticalConstraints)
+        addConstraints(horizontalConstraint)
     }
 }

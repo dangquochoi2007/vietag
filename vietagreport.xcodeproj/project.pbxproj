@@ -11,6 +11,13 @@
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
+		E6439280240B645E00970AE5 /* DrinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643927F240B645E00970AE5 /* DrinkCollectionViewCell.swift */; };
+		E6439283240BA6D000970AE5 /* DrinkWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439282240BA6D000970AE5 /* DrinkWaterViewController.swift */; };
+		E6439285240BA6E500970AE5 /* DrinkWaterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439284240BA6E500970AE5 /* DrinkWaterInteractor.swift */; };
+		E6439287240BA6EF00970AE5 /* DrinkWaterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439286240BA6EF00970AE5 /* DrinkWaterPresenter.swift */; };
+		E6439289240BA6FA00970AE5 /* DrinkWaterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439288240BA6FA00970AE5 /* DrinkWaterRouter.swift */; };
+		E643928B240BA70400970AE5 /* DrinkWaterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643928A240BA70400970AE5 /* DrinkWaterViewModel.swift */; };
+		E643928E240BAC8100970AE5 /* DrinkWaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643928D240BAC8100970AE5 /* DrinkWaterView.swift */; };
 		E645EAAC238A1A8E00095BFA /* TransferServiceScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */; };
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
 		E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6759A4123C973AA001068D3 /* ExploreView.swift */; };
@@ -70,6 +77,13 @@
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		E643927F240B645E00970AE5 /* DrinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCollectionViewCell.swift; sourceTree = "<group>"; };
+		E6439282240BA6D000970AE5 /* DrinkWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterViewController.swift; sourceTree = "<group>"; };
+		E6439284240BA6E500970AE5 /* DrinkWaterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterInteractor.swift; sourceTree = "<group>"; };
+		E6439286240BA6EF00970AE5 /* DrinkWaterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterPresenter.swift; sourceTree = "<group>"; };
+		E6439288240BA6FA00970AE5 /* DrinkWaterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterRouter.swift; sourceTree = "<group>"; };
+		E643928A240BA70400970AE5 /* DrinkWaterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterViewModel.swift; sourceTree = "<group>"; };
+		E643928D240BAC8100970AE5 /* DrinkWaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterView.swift; sourceTree = "<group>"; };
 		E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferServiceScannerTests.swift; sourceTree = "<group>"; };
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		E6759A4123C973AA001068D3 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
@@ -173,12 +187,34 @@
 			path = NetworkClient;
 			sourceTree = "<group>";
 		};
+		E6439281240BA6AF00970AE5 /* DrinkWater */ = {
+			isa = PBXGroup;
+			children = (
+				E643928C240BAC7000970AE5 /* UI */,
+				E6439282240BA6D000970AE5 /* DrinkWaterViewController.swift */,
+				E6439284240BA6E500970AE5 /* DrinkWaterInteractor.swift */,
+				E6439286240BA6EF00970AE5 /* DrinkWaterPresenter.swift */,
+				E6439288240BA6FA00970AE5 /* DrinkWaterRouter.swift */,
+				E643928A240BA70400970AE5 /* DrinkWaterViewModel.swift */,
+			);
+			path = DrinkWater;
+			sourceTree = "<group>";
+		};
+		E643928C240BAC7000970AE5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E643928D240BAC8100970AE5 /* DrinkWaterView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E6759A4023C9738E001068D3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
 				E6759A4123C973AA001068D3 /* ExploreView.swift */,
 				E6FBC5B723EFC228003327CA /* PlanCollectionViewCell.swift */,
 				E69B07B824027D2200ABB03E /* ProfileCollectionViewCell.swift */,
+				E643927F240B645E00970AE5 /* DrinkCollectionViewCell.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -205,6 +241,7 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E6439281240BA6AF00970AE5 /* DrinkWater */,
 				E6F1804923D2F7D800CE3A10 /* Schedule */,
 				E6FAB66E2348974200CED3B2 /* Explore */,
 				E6C426002335AC8D005F8A99 /* Register */,
@@ -500,12 +537,14 @@
 				E6F1804F23D2F98100CE3A10 /* ExplorePresenter.swift in Sources */,
 				E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */,
 				E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */,
+				E6439285240BA6E500970AE5 /* DrinkWaterInteractor.swift in Sources */,
 				E6FBC5B823EFC228003327CA /* PlanCollectionViewCell.swift in Sources */,
 				9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */,
 				E6C425F92335AC3A005F8A99 /* ForgotPasswordViewController.swift in Sources */,
 				E6C425F62335ABFF005F8A99 /* LoginViewController.swift in Sources */,
 				E6C426032335ACAA005F8A99 /* RegisterViewController.swift in Sources */,
 				E6F1805423D2FE8200CE3A10 /* ScheduleInteractor.swift in Sources */,
+				E643928B240BA70400970AE5 /* DrinkWaterViewModel.swift in Sources */,
 				E6C426072335B562005F8A99 /* LoginPresenter.swift in Sources */,
 				E6DC3B9B232E3441009DDD8B /* AppDelegate.swift in Sources */,
 				E6F1805D23D3138700CE3A10 /* DrinkWaterNavigationController.swift in Sources */,
@@ -515,7 +554,10 @@
 				E6F1804B23D2F7F800CE3A10 /* ScheduleViewController.swift in Sources */,
 				E6C425FF2335AC87005F8A99 /* ChangePasswordViewController.swift in Sources */,
 				E6DC3BA3232E3441009DDD8B /* vietagreport.xcdatamodeld in Sources */,
+				E6439289240BA6FA00970AE5 /* DrinkWaterRouter.swift in Sources */,
+				E643928E240BAC8100970AE5 /* DrinkWaterView.swift in Sources */,
 				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
+				E6439283240BA6D000970AE5 /* DrinkWaterViewController.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
 				E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
@@ -530,6 +572,8 @@
 				E6C425FC2335AC53005F8A99 /* RecoveryPasswordViewController.swift in Sources */,
 				E6FAB66C23486EBA00CED3B2 /* TransferServiceScanner.swift in Sources */,
 				E693C2322377ACD90084DEC5 /* Environment.swift in Sources */,
+				E6439280240B645E00970AE5 /* DrinkCollectionViewCell.swift in Sources */,
+				E6439287240BA6EF00970AE5 /* DrinkWaterPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

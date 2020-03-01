@@ -10,14 +10,16 @@ import UIKit
 
 class ExploreView: UIView {
     
-    lazy var exploreCollectionView: UICollectionView = {
+    lazy var exploreCollectionView: UICollectionView = { [unowned self] in
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.white
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: "ProfileCollectionViewCell")
         collectionView.register(PlanCollectionViewCell.self, forCellWithReuseIdentifier: "PlanCollectionViewCell")
+        collectionView.register(DrinkCollectionViewCell.self, forCellWithReuseIdentifier: "DrinkCollectionViewCell")
         return collectionView
     }()
 
