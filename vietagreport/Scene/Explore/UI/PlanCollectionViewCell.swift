@@ -53,15 +53,18 @@ class PlanCollectionViewCell: UICollectionViewCell {
             "scheduleButton": scheduleButton,
             "settingButton": settingButton,
         ]
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[notificationButton]",
+        
+        var allConstraints: [NSLayoutConstraint] = []
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-20-[notificationButton]-(>=0)-|",
                                                                  options: [],
                                                                  metrics: nil,
                                                                  views: viewsDictionary)
+        allConstraints += verticalConstraints
         let horizontalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[notificationButton]-[scheduleButton(==notificationButton)]-[settingButton(==notificationButton)]-20-|",
                                                                   options: [.alignAllFirstBaseline],
                                                                   metrics: nil,
                                                                   views: viewsDictionary)
-        addConstraints(verticalConstraints)
-        addConstraints(horizontalConstraint)
+        allConstraints += horizontalConstraint
+        NSLayoutConstraint.activate(allConstraints)
     }
 }

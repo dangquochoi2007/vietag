@@ -14,6 +14,9 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "ic_username")
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 50.0
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     
@@ -21,7 +24,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = UIFont(name: "HelveticaNeue", size: 15)
+        label.font = UIFont(name: "HelveticaNeue", size: 20)
         label.text = "Hi Miu Ham,\nRemember Drink water regular"
         return label
     }()
@@ -62,15 +65,37 @@ class ProfileCollectionViewCell: UICollectionViewCell {
             "percentIncreaseLabel": percentIncreaseLabel,
             "drinkVolumneLabel": drinkVolumneLabel
         ]
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[profileImage(100)]-10-[messageLabel]-30-[percentIncreaseLabel]-20-[drinkVolumneLabel]",
-                                                                 options: [.alignAllLeading, .alignAllTrailing],
-                                                                 metrics: [:],
-                                                                 views: viewsDictionary)
-        let horizontalConstrants = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[profileImage]-20-|",
-                                                                  options: [],
-                                                                  metrics: nil,
-                                                                  views: viewsDictionary)
-        addConstraints(verticalConstraints)
-        addConstraints(horizontalConstrants)
+        var allConstraints: [NSLayoutConstraint] = []
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat:"V:|-[profileImage(100)]-10-[messageLabel]-30-[percentIncreaseLabel]-20-[drinkVolumneLabel]-(>=0)-|",
+                                                                 options: [.alignAllCenterX],
+                                                                         metrics: nil,
+                                                                         views: viewsDictionary)
+        allConstraints += verticalConstraints
+        
+        let profileImageHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[profileImage]-|",
+                                                                               options: [],
+                                                                               metrics: nil,
+                                                                               views: viewsDictionary)
+        allConstraints += profileImageHorizontalConstraints
+        
+        let messageLabelHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[messageLabel]-20-|",
+                                                                               options: [],
+                                                                               metrics: nil,
+                                                                               views: viewsDictionary)
+        allConstraints += messageLabelHorizontalConstraints
+        
+        let percentIncreaseLabelHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[percentIncreaseLabel]-20-|",
+                                                                                       options: [],
+                                                                                       metrics: nil,
+                                                                                       views: viewsDictionary)
+        allConstraints += percentIncreaseLabelHorizontalConstraints
+        
+        let drinkVolumneLabelHorizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[drinkVolumneLabel]-20-|",
+                                                                                    options: [],
+                                                                                    metrics: nil,
+                                                                                    views: viewsDictionary)
+        
+        allConstraints += drinkVolumneLabelHorizontalConstraints
+        NSLayoutConstraint.activate(allConstraints)
     }
 }

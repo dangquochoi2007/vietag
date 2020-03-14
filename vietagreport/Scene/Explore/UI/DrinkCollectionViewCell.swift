@@ -36,15 +36,21 @@ class DrinkCollectionViewCell: UICollectionViewCell {
         let viewsDictionary = [
             "drinkButton": drinkButton
         ]
-        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[drinkButton(50)]",
+        
+        var allConstraints: [NSLayoutConstraint] = []
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-10-[drinkButton(52)]-(>=0)-|",
                                                                  options: [],
                                                                  metrics: nil,
                                                                  views: viewsDictionary)
+        allConstraints += verticalConstraints
+        
         let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-30-[drinkButton]-30-|",
                                                                    options: [],
                                                                    metrics: nil,
                                                                    views: viewsDictionary)
-        addConstraints(verticalConstraints)
-        addConstraints(horizontalConstraints)
+        
+        allConstraints += horizontalConstraints
+        
+        NSLayoutConstraint.activate(allConstraints)
     }
 }

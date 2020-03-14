@@ -73,11 +73,12 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
         let queue = DispatchQueue(label: "serial-queue")
         let group = DispatchGroup()
         queue.async {
-            print("Task 1 done")
-        }
-        queue.async {
             print("Task 2 done")
         }
+        queue.async {
+            print("Task 1 done")
+        }
+        
         group.wait()
         print("All task done")
     }
@@ -111,6 +112,9 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
             return cell
         case .Plan:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanCollectionViewCell", for: indexPath) as! PlanCollectionViewCell
+            cell.notificationButton.addTarget(self, action: #selector(notificationButtonPressed(_:)), for: .touchUpInside)
+            cell.scheduleButton.addTarget(self, action: #selector(scheduleButtonPressed(_:)), for: .touchUpInside)
+            cell.settingButton.addTarget(self, action: #selector(settingButtonPressed(_:)), for: .touchUpInside)
             return cell
         case .Drink:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrinkCollectionViewCell", for: indexPath) as! DrinkCollectionViewCell
@@ -124,7 +128,7 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
         case .Profile:
             return CGSize(width: collectionView.bounds.width, height: 340.0)
         case .Drink:
-            return CGSize(width: collectionView.bounds.width, height: 60.0)
+            return CGSize(width: collectionView.bounds.width, height: 70.0)
         case .Plan:
             return CGSize(width: collectionView.bounds.width, height: 100.0)
         }
@@ -132,8 +136,23 @@ class ExploreViewController: UIViewController, ExploreDisplayLogic, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let element = self.exploreElements[indexPath.section]
-        if element == .Drink {
+        switch element {
+        case .Drink:
             router?.navigateToDrinkWater()
+        default:
+            break
         }
+    }
+    
+    @IBAction func notificationButtonPressed(_ sender: UIButton) {
+        router?.navigateToSchedule()
+    }
+    
+    @IBAction func scheduleButtonPressed(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func settingButtonPressed(_ sender: UIButton) {
+        
     }
 }
