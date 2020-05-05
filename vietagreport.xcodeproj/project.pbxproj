@@ -11,6 +11,12 @@
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
+		E63BE161243054CA00945F14 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE160243054CA00945F14 /* RegisterInteractor.swift */; };
+		E63BE163243054D400945F14 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE162243054D400945F14 /* RegisterPresenter.swift */; };
+		E63BE165243054DD00945F14 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE164243054DD00945F14 /* RegisterRouter.swift */; };
+		E63BE1682430C01700945F14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE1672430C01700945F14 /* User.swift */; };
+		E63BE16A2430C02200945F14 /* Water.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE1692430C02200945F14 /* Water.swift */; };
+		E63BE16D2430C0F000945F14 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE16C2430C0F000945F14 /* UserService.swift */; };
 		E6439280240B645E00970AE5 /* DrinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E643927F240B645E00970AE5 /* DrinkCollectionViewCell.swift */; };
 		E6439283240BA6D000970AE5 /* DrinkWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439282240BA6D000970AE5 /* DrinkWaterViewController.swift */; };
 		E6439285240BA6E500970AE5 /* DrinkWaterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6439284240BA6E500970AE5 /* DrinkWaterInteractor.swift */; };
@@ -77,6 +83,12 @@
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		E63BE160243054CA00945F14 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		E63BE162243054D400945F14 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		E63BE164243054DD00945F14 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		E63BE1672430C01700945F14 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E63BE1692430C02200945F14 /* Water.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Water.swift; sourceTree = "<group>"; };
+		E63BE16C2430C0F000945F14 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		E643927F240B645E00970AE5 /* DrinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6439282240BA6D000970AE5 /* DrinkWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterViewController.swift; sourceTree = "<group>"; };
 		E6439284240BA6E500970AE5 /* DrinkWaterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkWaterInteractor.swift; sourceTree = "<group>"; };
@@ -187,6 +199,72 @@
 			path = NetworkClient;
 			sourceTree = "<group>";
 		};
+		E63BE1532430541200945F14 /* InboxList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InboxList;
+			sourceTree = "<group>";
+		};
+		E63BE1542430541B00945F14 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		E63BE1552430542100945F14 /* PaymentList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PaymentList;
+			sourceTree = "<group>";
+		};
+		E63BE1562430542900945F14 /* PaymentAdd */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PaymentAdd;
+			sourceTree = "<group>";
+		};
+		E63BE1572430545100945F14 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		E63BE1582430545B00945F14 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		E63BE1592430546600945F14 /* PaymentDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PaymentDetail;
+			sourceTree = "<group>";
+		};
+		E63BE1662430C00300945F14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E63BE1672430C01700945F14 /* User.swift */,
+				E63BE1692430C02200945F14 /* Water.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E63BE16B2430C0DF00945F14 /* UserService */ = {
+			isa = PBXGroup;
+			children = (
+				E63BE16C2430C0F000945F14 /* UserService.swift */,
+			);
+			path = UserService;
+			sourceTree = "<group>";
+		};
 		E6439281240BA6AF00970AE5 /* DrinkWater */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +319,13 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E63BE1582430545B00945F14 /* ProductDetail */,
+				E63BE1572430545100945F14 /* ProductList */,
+				E63BE1592430546600945F14 /* PaymentDetail */,
+				E63BE1562430542900945F14 /* PaymentAdd */,
+				E63BE1552430542100945F14 /* PaymentList */,
+				E63BE1542430541B00945F14 /* Inbox */,
+				E63BE1532430541200945F14 /* InboxList */,
 				E6439281240BA6AF00970AE5 /* DrinkWater */,
 				E6F1804923D2F7D800CE3A10 /* Schedule */,
 				E6FAB66E2348974200CED3B2 /* Explore */,
@@ -293,6 +378,9 @@
 			isa = PBXGroup;
 			children = (
 				E6C426022335ACAA005F8A99 /* RegisterViewController.swift */,
+				E63BE160243054CA00945F14 /* RegisterInteractor.swift */,
+				E63BE162243054D400945F14 /* RegisterPresenter.swift */,
+				E63BE164243054DD00945F14 /* RegisterRouter.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -320,15 +408,16 @@
 		E6DC3B99232E3441009DDD8B /* vietagreport */ = {
 			isa = PBXGroup;
 			children = (
-				E6FAB66D234894FC00CED3B2 /* vietagreport.entitlements */,
-				E6F1805B23D3134300CE3A10 /* CustomView */,
+				E63BE1662430C00300945F14 /* Model */,
 				E6FAB66A23486EA700CED3B2 /* Service */,
+				E6F1805B23D3134300CE3A10 /* CustomView */,
 				E6C425F32335ABC6005F8A99 /* Scene */,
 				E6DC3B9A232E3441009DDD8B /* AppDelegate.swift */,
 				E6DC3BA4232E3443009DDD8B /* Assets.xcassets */,
 				E6DC3BA6232E3443009DDD8B /* LaunchScreen.storyboard */,
 				E6DC3BA9232E3443009DDD8B /* Info.plist */,
 				E6DC3BA1232E3441009DDD8B /* vietagreport.xcdatamodeld */,
+				E6FAB66D234894FC00CED3B2 /* vietagreport.entitlements */,
 			);
 			path = vietagreport;
 			sourceTree = "<group>";
@@ -383,6 +472,7 @@
 		E6FAB66A23486EA700CED3B2 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E63BE16B2430C0DF00945F14 /* UserService */,
 				E6BFCB9C23A3D8B7005EF8B9 /* Configuration */,
 				E613EFF22369CE4800C43535 /* NetworkClient */,
 				E6FAB66B23486EBA00CED3B2 /* TransferServiceScanner.swift */,
@@ -547,7 +637,9 @@
 				E643928B240BA70400970AE5 /* DrinkWaterViewModel.swift in Sources */,
 				E6C426072335B562005F8A99 /* LoginPresenter.swift in Sources */,
 				E6DC3B9B232E3441009DDD8B /* AppDelegate.swift in Sources */,
+				E63BE16A2430C02200945F14 /* Water.swift in Sources */,
 				E6F1805D23D3138700CE3A10 /* DrinkWaterNavigationController.swift in Sources */,
+				E63BE161243054CA00945F14 /* RegisterInteractor.swift in Sources */,
 				E6C426052335B3B1005F8A99 /* LoginInteractor.swift in Sources */,
 				E6F1804D23D2F97A00CE3A10 /* ExploreInteractor.swift in Sources */,
 				E6F1805123D2F9BE00CE3A10 /* ExploreRouter.swift in Sources */,
@@ -562,14 +654,18 @@
 				E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
 				E6F1805623D2FE9300CE3A10 /* SchedulePresenter.swift in Sources */,
+				E63BE16D2430C0F000945F14 /* UserService.swift in Sources */,
 				E6372E5D2385BC080079674E /* APIError.swift in Sources */,
 				E6F1805823D2FE9C00CE3A10 /* ScheduleRouter.swift in Sources */,
 				E69B07B924027D2200ABB03E /* ProfileCollectionViewCell.swift in Sources */,
+				E63BE1682430C01700945F14 /* User.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,
+				E63BE165243054DD00945F14 /* RegisterRouter.swift in Sources */,
 				E6AE6C7E24016BA200C6BE52 /* ExploreViewModel.swift in Sources */,
 				E6C425FC2335AC53005F8A99 /* RecoveryPasswordViewController.swift in Sources */,
+				E63BE163243054D400945F14 /* RegisterPresenter.swift in Sources */,
 				E6FAB66C23486EBA00CED3B2 /* TransferServiceScanner.swift in Sources */,
 				E693C2322377ACD90084DEC5 /* Environment.swift in Sources */,
 				E6439280240B645E00970AE5 /* DrinkCollectionViewCell.swift in Sources */,
