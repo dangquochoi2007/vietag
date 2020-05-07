@@ -12,6 +12,28 @@ import HaishinKit
 
 class LiveViewController: UIViewController {
 
+    lazy var liveView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        connectTV()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError(" init?(coder: NSCoder) not implements")
+    }
+    
+    deinit {
+        debugPrint("")
+    }
+    
+    override func loadView() {
+        view = liveView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
