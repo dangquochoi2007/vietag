@@ -3,12 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131DBE8CEEC06C3A99A1EF7B /* Pods_vietagreport_vietagreportUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0727BEF61D58EC93E71D37 /* Pods_vietagreport_vietagreportUITests.framework */; };
+		2485B7803527A5A60FA05531 /* Pods_vietagreportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */; };
 		9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */; };
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
+		B1CCEAE40262B14F127A2D50 /* Pods_vietagreport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B77B818B4A1503752D860F /* Pods_vietagreport.framework */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
 		E6372E5D2385BC080079674E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6372E5C2385BC080079674E /* APIError.swift */; };
 		E63BE161243054CA00945F14 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BE160243054CA00945F14 /* RegisterInteractor.swift */; };
@@ -27,6 +30,7 @@
 		E645EAAC238A1A8E00095BFA /* TransferServiceScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */; };
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
 		E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6759A4123C973AA001068D3 /* ExploreView.swift */; };
+		E6895D7C2464539900F5B471 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6895D7B2464539900F5B471 /* LiveViewController.swift */; };
 		E693C2322377ACD90084DEC5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C2312377ACD90084DEC5 /* Environment.swift */; };
 		E69B07B924027D2200ABB03E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69B07B824027D2200ABB03E /* ProfileCollectionViewCell.swift */; };
 		E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A38620237F839E005279D2 /* NetworkServiceError.swift */; };
@@ -79,8 +83,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07D403DDA2818B6EB62FA5FD /* Pods-vietagreport.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.staging.xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.staging.xcconfig"; sourceTree = "<group>"; };
+		161AE7E7BBF8AA3065924EEC /* Pods-vietagreport-vietagreportUITests.alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport-vietagreportUITests.alpha.xcconfig"; path = "Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests.alpha.xcconfig"; sourceTree = "<group>"; };
+		309E761587C098126850FCBC /* Pods-vietagreportTests.alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.alpha.xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.alpha.xcconfig"; sourceTree = "<group>"; };
+		47AEC4DCB35D7D42032591AD /* Pods-vietagreport-vietagreportUITests.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport-vietagreportUITests.debug (development).xcconfig"; path = "Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests.debug (development).xcconfig"; sourceTree = "<group>"; };
+		56B77B818B4A1503752D860F /* Pods_vietagreport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vietagreport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		59017B8341A1551FC0F0E8D0 /* Pods-vietagreport-vietagreportUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport-vietagreportUITests.staging.xcconfig"; path = "Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests.staging.xcconfig"; sourceTree = "<group>"; };
+		59F208714FB0648C1953EFF6 /* Pods-vietagreport-vietagreportUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport-vietagreportUITests.release.xcconfig"; path = "Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7E385D73FD4012E7C3BAEEC4 /* Pods-vietagreport.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.release.xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.release.xcconfig"; sourceTree = "<group>"; };
+		84418527B877A93FF20EEC13 /* Pods-vietagreportTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.staging.xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.staging.xcconfig"; sourceTree = "<group>"; };
+		848279CEF46E6D789E3C9BAD /* Pods-vietagreportTests.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.debug (development).xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.debug (development).xcconfig"; sourceTree = "<group>"; };
+		90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vietagreportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		942DB2A09CD66BDECA50D28C /* Pods-vietagreport.alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.alpha.xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.alpha.xcconfig"; sourceTree = "<group>"; };
 		9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		9A4D981BCA002BF05C668FE1 /* Pods-vietagreport.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.debug (development).xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.debug (development).xcconfig"; sourceTree = "<group>"; };
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
+		B569EAA2189DD25A64A38976 /* Pods-vietagreportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.release.xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.release.xcconfig"; sourceTree = "<group>"; };
+		DC0727BEF61D58EC93E71D37 /* Pods_vietagreport_vietagreportUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vietagreport_vietagreportUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E613EFF32369CE5B00C43535 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		E6372E5C2385BC080079674E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		E63BE160243054CA00945F14 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
@@ -99,6 +118,7 @@
 		E645EAAB238A1A8E00095BFA /* TransferServiceScannerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferServiceScannerTests.swift; sourceTree = "<group>"; };
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		E6759A4123C973AA001068D3 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		E6895D7B2464539900F5B471 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
 		E693C2312377ACD90084DEC5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E69B07B824027D2200ABB03E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6A38620237F839E005279D2 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -149,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CCEAE40262B14F127A2D50 /* Pods_vietagreport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2485B7803527A5A60FA05531 /* Pods_vietagreportTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,12 +185,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				131DBE8CEEC06C3A99A1EF7B /* Pods_vietagreport_vietagreportUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39632B82EF9CC317CEC12FFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56B77B818B4A1503752D860F /* Pods_vietagreport.framework */,
+				DC0727BEF61D58EC93E71D37 /* Pods_vietagreport_vietagreportUITests.framework */,
+				90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9AD8B9FE23863CA500E7F269 /* ServiceTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +330,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		E6895D7A2464538400F5B471 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				E6895D7B2464539900F5B471 /* LiveViewController.swift */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
 		E6A502C72337ADE800E8128C /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +360,7 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				E6895D7A2464538400F5B471 /* Live */,
 				E63BE1582430545B00945F14 /* ProductDetail */,
 				E63BE1572430545100945F14 /* ProductList */,
 				E63BE1592430546600945F14 /* PaymentDetail */,
@@ -392,6 +434,8 @@
 				E6DC3BB1232E3443009DDD8B /* vietagreportTests */,
 				E6DC3BBC232E3443009DDD8B /* vietagreportUITests */,
 				E6DC3B98232E3441009DDD8B /* Products */,
+				EA79A6F6821A79139C0545B3 /* Pods */,
+				39632B82EF9CC317CEC12FFC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -494,6 +538,25 @@
 			path = Explore;
 			sourceTree = "<group>";
 		};
+		EA79A6F6821A79139C0545B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A4D981BCA002BF05C668FE1 /* Pods-vietagreport.debug (development).xcconfig */,
+				942DB2A09CD66BDECA50D28C /* Pods-vietagreport.alpha.xcconfig */,
+				07D403DDA2818B6EB62FA5FD /* Pods-vietagreport.staging.xcconfig */,
+				7E385D73FD4012E7C3BAEEC4 /* Pods-vietagreport.release.xcconfig */,
+				47AEC4DCB35D7D42032591AD /* Pods-vietagreport-vietagreportUITests.debug (development).xcconfig */,
+				161AE7E7BBF8AA3065924EEC /* Pods-vietagreport-vietagreportUITests.alpha.xcconfig */,
+				59017B8341A1551FC0F0E8D0 /* Pods-vietagreport-vietagreportUITests.staging.xcconfig */,
+				59F208714FB0648C1953EFF6 /* Pods-vietagreport-vietagreportUITests.release.xcconfig */,
+				848279CEF46E6D789E3C9BAD /* Pods-vietagreportTests.debug (development).xcconfig */,
+				309E761587C098126850FCBC /* Pods-vietagreportTests.alpha.xcconfig */,
+				84418527B877A93FF20EEC13 /* Pods-vietagreportTests.staging.xcconfig */,
+				B569EAA2189DD25A64A38976 /* Pods-vietagreportTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -501,9 +564,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6DC3BC2232E3443009DDD8B /* Build configuration list for PBXNativeTarget "vietagreport" */;
 			buildPhases = (
+				EEB06FF9F0220B926337AB36 /* [CP] Check Pods Manifest.lock */,
 				E6DC3B93232E3441009DDD8B /* Sources */,
 				E6DC3B94232E3441009DDD8B /* Frameworks */,
 				E6DC3B95232E3441009DDD8B /* Resources */,
+				21EDDD5C92137D1373A1DAAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -518,6 +583,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6DC3BC5232E3443009DDD8B /* Build configuration list for PBXNativeTarget "vietagreportTests" */;
 			buildPhases = (
+				814EAD4B319FFBDBBAB0327C /* [CP] Check Pods Manifest.lock */,
 				E6DC3BAA232E3443009DDD8B /* Sources */,
 				E6DC3BAB232E3443009DDD8B /* Frameworks */,
 				E6DC3BAC232E3443009DDD8B /* Resources */,
@@ -536,9 +602,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E6DC3BC8232E3443009DDD8B /* Build configuration list for PBXNativeTarget "vietagreportUITests" */;
 			buildPhases = (
+				FF039483873DBCB467D75531 /* [CP] Check Pods Manifest.lock */,
 				E6DC3BB5232E3443009DDD8B /* Sources */,
 				E6DC3BB6232E3443009DDD8B /* Frameworks */,
 				E6DC3BB7232E3443009DDD8B /* Resources */,
+				1BB5CFDB2FAF7E99FEBB23C9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -619,6 +687,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1BB5CFDB2FAF7E99FEBB23C9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vietagreport-vietagreportUITests/Pods-vietagreport-vietagreportUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		21EDDD5C92137D1373A1DAAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vietagreport/Pods-vietagreport-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-vietagreport/Pods-vietagreport-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-vietagreport/Pods-vietagreport-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		814EAD4B319FFBDBBAB0327C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vietagreportTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEB06FF9F0220B926337AB36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vietagreport-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF039483873DBCB467D75531 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-vietagreport-vietagreportUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E6DC3B93232E3441009DDD8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -650,6 +821,7 @@
 				E643928E240BAC8100970AE5 /* DrinkWaterView.swift in Sources */,
 				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
 				E6439283240BA6D000970AE5 /* DrinkWaterViewController.swift in Sources */,
+				E6895D7C2464539900F5B471 /* LiveViewController.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
 				E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
@@ -804,6 +976,7 @@
 		};
 		E668AEFE23A45DBE0010C68C /* Alpha */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 309E761587C098126850FCBC /* Pods-vietagreportTests.alpha.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -824,6 +997,7 @@
 		};
 		E668AEFF23A45DBE0010C68C /* Alpha */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 161AE7E7BBF8AA3065924EEC /* Pods-vietagreport-vietagreportUITests.alpha.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -927,6 +1101,7 @@
 		};
 		E668AF0223A45DD30010C68C /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84418527B877A93FF20EEC13 /* Pods-vietagreportTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -947,6 +1122,7 @@
 		};
 		E668AF0323A45DD30010C68C /* Staging */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59017B8341A1551FC0F0E8D0 /* Pods-vietagreport-vietagreportUITests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1128,6 +1304,7 @@
 		};
 		E6DC3BC6232E3443009DDD8B /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 848279CEF46E6D789E3C9BAD /* Pods-vietagreportTests.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1148,6 +1325,7 @@
 		};
 		E6DC3BC7232E3443009DDD8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B569EAA2189DD25A64A38976 /* Pods-vietagreportTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1168,6 +1346,7 @@
 		};
 		E6DC3BC9232E3443009DDD8B /* Debug (Development) */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47AEC4DCB35D7D42032591AD /* Pods-vietagreport-vietagreportUITests.debug (development).xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1187,6 +1366,7 @@
 		};
 		E6DC3BCA232E3443009DDD8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59F208714FB0648C1953EFF6 /* Pods-vietagreport-vietagreportUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

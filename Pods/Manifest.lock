@@ -1,0 +1,26 @@
+PODS:
+  - ConnectSDK/Core (1.6.0):
+    - ConnectSDK/no-arc
+  - ConnectSDK/no-arc (1.6.0)
+  - HaishinKit (1.0.8):
+    - Logboard (~> 2.1.2)
+  - Logboard (2.1.2)
+
+DEPENDENCIES:
+  - ConnectSDK/Core
+  - HaishinKit
+
+SPEC REPOS:
+  trunk:
+    - ConnectSDK
+    - HaishinKit
+    - Logboard
+
+SPEC CHECKSUMS:
+  ConnectSDK: f6159b056ec53943df82c4d541a9bfae21592be4
+  HaishinKit: c620b58d2b5e4d7032b6447cd57f127f25c074df
+  Logboard: e3342fa111e26268bb89577e6a40a0660a423ddd
+
+PODFILE CHECKSUM: 115678b4d21562824b92a8f773dd1d63ed85f5de
+
+COCOAPODS: 1.9.1

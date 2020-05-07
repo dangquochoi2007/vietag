@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import SwiftUI
+import ConnectSDK
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -92,5 +94,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    
+    private func setupAudio() {
+        let session = AVAudioSession.sharedInstance()
+        do {
+            // https://stackoverflow.com/questions/51010390/avaudiosession-setcategory-swift-4-2-ios-12-play-sound-on-silent
+            try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+            try session.setActive(true)
+        } catch {
+            print(error)
+        }
+    }
 }
 
