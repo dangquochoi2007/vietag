@@ -10,11 +10,18 @@ import UIKit
 import ConnectSDK
 import HaishinKit
 
-class LiveViewController: UIViewController {
+class LiveViewController: UIViewController, DevicePickerDelegate, ConnectableDeviceDelegate {
 
-    lazy var liveView: UIView = {
-        let view = UIView()
+    lazy var liveView: LiveView = {
+        let view = LiveView()
+        view.backgroundColor = UIColor.white
+        view.buttonConnect.addTarget(self, action: #selector(buttonConnectPressed(_:)), for: .touchUpInside)
         return view
+    }()
+    
+    lazy var connectDevices: ConnectableDevice = {
+        let device = ConnectableDevice()
+        return device
     }()
     
     init() {
@@ -27,7 +34,7 @@ class LiveViewController: UIViewController {
     }
     
     deinit {
-        debugPrint("")
+        debugPrint("LiveViewController deinit")
     }
     
     override func loadView() {
@@ -40,19 +47,56 @@ class LiveViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func buttonConnectPressed(_ sender: UIButton) {
+        // This step could even happen in your app's delegate
+        let discover = DiscoveryManager.shared()
+        discover?.devicePicker()?.delegate = self
+        discover?.startDiscovery()
+        discover?.devicePicker()?.show(self)
+    }
+    
     func connectTV() {
-        var httpStream = HTTPStream()
-        httpStream.attachScreen(ScreenCaptureSession(shared: UIApplication.shared))
+//        var httpStream = HTTPStream()
+//        httpStream.attachScreen(ScreenCaptureSession(shared: UIApplication.shared))
+//
+//        httpStream.publish("hello")
+//        var hkView = HKView(frame: view.bounds)
+//        hkView.attachStream(httpStream)
+//
+//        var httpService = HLSService(domain: "", type: "_http._tcp", name: "HaishinKit", port: 8080)
+//        httpService.startRunning()
+//        httpService.addHTTPStream(httpStream)
+//
+//        // add ViewController#view
+//        view.addSubview(hkView)
+    }
+    
+    // MARK: DevicePickerDelegate
+    func devicePicker(_ picker: DevicePicker!, didCancelWithError error: Error!) {
         
-        httpStream.publish("hello")
-        var hkView = HKView(frame: view.bounds)
-        hkView.attachStream(httpStream)
-
-        var httpService = HLSService(domain: "", type: "_http._tcp", name: "HaishinKit", port: 8080)
-        httpService.startRunning()
-        httpService.addHTTPStream(httpStream)
-
-        // add ViewController#view
-        view.addSubview(hkView)
+    }
+    
+    func devicePicker(_ picker: DevicePicker!, didSelect device: ConnectableDevice!) {
+        connectDevices.delegate = self
+        connectDevices.connect()
+    }
+    
+    // MARK: ConnectableDeviceDelegate
+    
+    func connectableDeviceReady(_ device: ConnectableDevice!) {
+        // display content here
+        device.mediaPlayer
+    }
+    
+    func connectableDeviceDisconnected(_ device: ConnectableDevice!, withError error: Error!) {
+        
+    }
+    
+    func connectableDevicePairingSuccess(_ device: ConnectableDevice!, service: DeviceService!) {
+        
+    }
+    
+    func connectableDevice(_ device: ConnectableDevice!, capabilitiesAdded added: [Any]!, removed: [Any]!) {
+        
     }
 }

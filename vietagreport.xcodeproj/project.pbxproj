@@ -31,6 +31,7 @@
 		E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6466254236D905500375EB9 /* NetworkRouter.swift */; };
 		E6759A4223C973AA001068D3 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6759A4123C973AA001068D3 /* ExploreView.swift */; };
 		E6895D7C2464539900F5B471 /* LiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6895D7B2464539900F5B471 /* LiveViewController.swift */; };
+		E68BF4F924663370007EB39D /* LiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68BF4F824663370007EB39D /* LiveView.swift */; };
 		E693C2322377ACD90084DEC5 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E693C2312377ACD90084DEC5 /* Environment.swift */; };
 		E69B07B924027D2200ABB03E /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69B07B824027D2200ABB03E /* ProfileCollectionViewCell.swift */; };
 		E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A38620237F839E005279D2 /* NetworkServiceError.swift */; };
@@ -119,6 +120,7 @@
 		E6466254236D905500375EB9 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		E6759A4123C973AA001068D3 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		E6895D7B2464539900F5B471 /* LiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveViewController.swift; sourceTree = "<group>"; };
+		E68BF4F824663370007EB39D /* LiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveView.swift; sourceTree = "<group>"; };
 		E693C2312377ACD90084DEC5 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		E69B07B824027D2200ABB03E /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		E6A38620237F839E005279D2 /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -333,9 +335,18 @@
 		E6895D7A2464538400F5B471 /* Live */ = {
 			isa = PBXGroup;
 			children = (
+				E68BF4FA24668010007EB39D /* UI */,
 				E6895D7B2464539900F5B471 /* LiveViewController.swift */,
 			);
 			path = Live;
+			sourceTree = "<group>";
+		};
+		E68BF4FA24668010007EB39D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E68BF4F824663370007EB39D /* LiveView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E6A502C72337ADE800E8128C /* UI */ = {
@@ -831,6 +842,7 @@
 				E6F1805823D2FE9C00CE3A10 /* ScheduleRouter.swift in Sources */,
 				E69B07B924027D2200ABB03E /* ProfileCollectionViewCell.swift in Sources */,
 				E63BE1682430C01700945F14 /* User.swift in Sources */,
+				E68BF4F924663370007EB39D /* LiveView.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,
