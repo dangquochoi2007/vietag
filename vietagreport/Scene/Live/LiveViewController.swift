@@ -85,7 +85,7 @@ class LiveViewController: UIViewController, DevicePickerDelegate, ConnectableDev
     
     func connectableDeviceReady(_ device: ConnectableDevice!) {
         // display content here
-        device.mediaPlayer
+      
     }
     
     func connectableDeviceDisconnected(_ device: ConnectableDevice!, withError error: Error!) {

@@ -10,6 +10,11 @@
 		131DBE8CEEC06C3A99A1EF7B /* Pods_vietagreport_vietagreportUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0727BEF61D58EC93E71D37 /* Pods_vietagreport_vietagreportUITests.framework */; };
 		2485B7803527A5A60FA05531 /* Pods_vietagreportTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */; };
 		9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */; };
+		9A17A7B02474E94100E1A855 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7AF2474E94100E1A855 /* PhotoViewController.swift */; };
+		9A17A7B22474E95A00E1A855 /* PhotoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B12474E95A00E1A855 /* PhotoInteractor.swift */; };
+		9A17A7B42474E98100E1A855 /* PhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B32474E98100E1A855 /* PhotoPresenter.swift */; };
+		9A17A7B62474E9BF00E1A855 /* PhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B52474E9BF00E1A855 /* PhotoRouter.swift */; };
+		9A17A7B92474E9F900E1A855 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B82474E9F900E1A855 /* PhotoView.swift */; };
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		B1CCEAE40262B14F127A2D50 /* Pods_vietagreport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B77B818B4A1503752D860F /* Pods_vietagreport.framework */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
@@ -97,6 +102,11 @@
 		90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_vietagreportTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		942DB2A09CD66BDECA50D28C /* Pods-vietagreport.alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.alpha.xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.alpha.xcconfig"; sourceTree = "<group>"; };
 		9A0A3A4D238E0FD7000100E5 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		9A17A7AF2474E94100E1A855 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		9A17A7B12474E95A00E1A855 /* PhotoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoInteractor.swift; sourceTree = "<group>"; };
+		9A17A7B32474E98100E1A855 /* PhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPresenter.swift; sourceTree = "<group>"; };
+		9A17A7B52474E9BF00E1A855 /* PhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRouter.swift; sourceTree = "<group>"; };
+		9A17A7B82474E9F900E1A855 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		9A4D981BCA002BF05C668FE1 /* Pods-vietagreport.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.debug (development).xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.debug (development).xcconfig"; sourceTree = "<group>"; };
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		B569EAA2189DD25A64A38976 /* Pods-vietagreportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.release.xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +212,26 @@
 				90919BBB96B00D39A1E50769 /* Pods_vietagreportTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A17A7AE2474E92500E1A855 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				9A17A7B72474E9E700E1A855 /* UI */,
+				9A17A7AF2474E94100E1A855 /* PhotoViewController.swift */,
+				9A17A7B12474E95A00E1A855 /* PhotoInteractor.swift */,
+				9A17A7B32474E98100E1A855 /* PhotoPresenter.swift */,
+				9A17A7B52474E9BF00E1A855 /* PhotoRouter.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		9A17A7B72474E9E700E1A855 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9A17A7B82474E9F900E1A855 /* PhotoView.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		9AD8B9FE23863CA500E7F269 /* ServiceTests */ = {
@@ -371,6 +401,7 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				9A17A7AE2474E92500E1A855 /* Photo */,
 				E6895D7A2464538400F5B471 /* Live */,
 				E63BE1582430545B00945F14 /* ProductDetail */,
 				E63BE1572430545100945F14 /* ProductList */,
@@ -811,6 +842,7 @@
 				E6A38621237F839E005279D2 /* NetworkServiceError.swift in Sources */,
 				E6439285240BA6E500970AE5 /* DrinkWaterInteractor.swift in Sources */,
 				E6FBC5B823EFC228003327CA /* PlanCollectionViewCell.swift in Sources */,
+				9A17A7B42474E98100E1A855 /* PhotoPresenter.swift in Sources */,
 				9A0A3A4E238E0FD7000100E5 /* HTTPMethod.swift in Sources */,
 				E6C425F92335AC3A005F8A99 /* ForgotPasswordViewController.swift in Sources */,
 				E6C425F62335ABFF005F8A99 /* LoginViewController.swift in Sources */,
@@ -824,6 +856,7 @@
 				E63BE161243054CA00945F14 /* RegisterInteractor.swift in Sources */,
 				E6C426052335B3B1005F8A99 /* LoginInteractor.swift in Sources */,
 				E6F1804D23D2F97A00CE3A10 /* ExploreInteractor.swift in Sources */,
+				9A17A7B62474E9BF00E1A855 /* PhotoRouter.swift in Sources */,
 				E6F1805123D2F9BE00CE3A10 /* ExploreRouter.swift in Sources */,
 				E6F1804B23D2F7F800CE3A10 /* ScheduleViewController.swift in Sources */,
 				E6C425FF2335AC87005F8A99 /* ChangePasswordViewController.swift in Sources */,
@@ -831,8 +864,10 @@
 				E6439289240BA6FA00970AE5 /* DrinkWaterRouter.swift in Sources */,
 				E643928E240BAC8100970AE5 /* DrinkWaterView.swift in Sources */,
 				E6466255236D905500375EB9 /* NetworkRouter.swift in Sources */,
+				9A17A7B02474E94100E1A855 /* PhotoViewController.swift in Sources */,
 				E6439283240BA6D000970AE5 /* DrinkWaterViewController.swift in Sources */,
 				E6895D7C2464539900F5B471 /* LiveViewController.swift in Sources */,
+				9A17A7B92474E9F900E1A855 /* PhotoView.swift in Sources */,
 				E6A502C92337ADFF00E8128C /* LoginView.swift in Sources */,
 				E6F1805A23D301A300CE3A10 /* ScheduleView.swift in Sources */,
 				E6C426092335B570005F8A99 /* LoginRouter.swift in Sources */,
@@ -844,6 +879,7 @@
 				E63BE1682430C01700945F14 /* User.swift in Sources */,
 				E68BF4F924663370007EB39D /* LiveView.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
+				9A17A7B22474E95A00E1A855 /* PhotoInteractor.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,
 				E63BE165243054DD00945F14 /* RegisterRouter.swift in Sources */,
