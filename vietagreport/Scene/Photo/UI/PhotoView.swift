@@ -13,6 +13,7 @@ class PhotoView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Take Photo", for: .normal)
+        button.backgroundColor = UIColor.red
         return button
     }()
     
@@ -31,9 +32,10 @@ class PhotoView: UIView {
         }
         
         NSLayoutConstraint.activate([
-            capturePhotoButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            capturePhotoButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 16),
-            
+            capturePhotoButton.heightAnchor.constraint(equalToConstant: 48.0),
+            capturePhotoButton.widthAnchor.constraint(equalToConstant: 180.0),
+            capturePhotoButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            capturePhotoButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }
