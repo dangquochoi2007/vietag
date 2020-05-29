@@ -15,6 +15,8 @@
 		9A17A7B42474E98100E1A855 /* PhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B32474E98100E1A855 /* PhotoPresenter.swift */; };
 		9A17A7B62474E9BF00E1A855 /* PhotoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B52474E9BF00E1A855 /* PhotoRouter.swift */; };
 		9A17A7B92474E9F900E1A855 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17A7B82474E9F900E1A855 /* PhotoView.swift */; };
+		9A1B779F2480BCDB0004A9AA /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B779E2480BCDB0004A9AA /* ModalView.swift */; };
+		9A1B77A12480F3E90004A9AA /* ErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A1B77A02480F3E90004A9AA /* ErrorViewModel.swift */; };
 		9AD8BA0123863CF100E7F269 /* AuthenticationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */; };
 		B1CCEAE40262B14F127A2D50 /* Pods_vietagreport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B77B818B4A1503752D860F /* Pods_vietagreport.framework */; };
 		E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E613EFF32369CE5B00C43535 /* NetworkClient.swift */; };
@@ -107,6 +109,8 @@
 		9A17A7B32474E98100E1A855 /* PhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPresenter.swift; sourceTree = "<group>"; };
 		9A17A7B52474E9BF00E1A855 /* PhotoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRouter.swift; sourceTree = "<group>"; };
 		9A17A7B82474E9F900E1A855 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
+		9A1B779E2480BCDB0004A9AA /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		9A1B77A02480F3E90004A9AA /* ErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewModel.swift; sourceTree = "<group>"; };
 		9A4D981BCA002BF05C668FE1 /* Pods-vietagreport.debug (development).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreport.debug (development).xcconfig"; path = "Target Support Files/Pods-vietagreport/Pods-vietagreport.debug (development).xcconfig"; sourceTree = "<group>"; };
 		9AD8BA0023863CF100E7F269 /* AuthenticationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationServiceTests.swift; sourceTree = "<group>"; };
 		B569EAA2189DD25A64A38976 /* Pods-vietagreportTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-vietagreportTests.release.xcconfig"; path = "Target Support Files/Pods-vietagreportTests/Pods-vietagreportTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -234,6 +238,22 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		9A1B779C2480AD5C0004A9AA /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				9A1B779D2480BCCD0004A9AA /* UI */,
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		9A1B779D2480BCCD0004A9AA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9A1B779E2480BCDB0004A9AA /* ModalView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		9AD8B9FE23863CA500E7F269 /* ServiceTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +338,7 @@
 			children = (
 				E63BE1672430C01700945F14 /* User.swift */,
 				E63BE1692430C02200945F14 /* Water.swift */,
+				9A1B77A02480F3E90004A9AA /* ErrorViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +422,7 @@
 		E6C425F32335ABC6005F8A99 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				9A1B779C2480AD5C0004A9AA /* Modal */,
 				9A17A7AE2474E92500E1A855 /* Photo */,
 				E6895D7A2464538400F5B471 /* Live */,
 				E63BE1582430545B00945F14 /* ProductDetail */,
@@ -879,6 +901,7 @@
 				E63BE1682430C01700945F14 /* User.swift in Sources */,
 				E68BF4F924663370007EB39D /* LiveView.swift in Sources */,
 				E613EFF42369CE5B00C43535 /* NetworkClient.swift in Sources */,
+				9A1B779F2480BCDB0004A9AA /* ModalView.swift in Sources */,
 				9A17A7B22474E95A00E1A855 /* PhotoInteractor.swift in Sources */,
 				E6FAB6702348975A00CED3B2 /* ExploreViewController.swift in Sources */,
 				E6A38623237F8BBD005279D2 /* AuthenticationService.swift in Sources */,
@@ -890,6 +913,7 @@
 				E693C2322377ACD90084DEC5 /* Environment.swift in Sources */,
 				E6439280240B645E00970AE5 /* DrinkCollectionViewCell.swift in Sources */,
 				E6439287240BA6EF00970AE5 /* DrinkWaterPresenter.swift in Sources */,
+				9A1B77A12480F3E90004A9AA /* ErrorViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
